@@ -1,0 +1,321 @@
+﻿<tn:TaskbarNotifier x:Class="WPFTaskbarNotifierExample.ExampleTaskbarNotifier"
+    xmlns:tn="clr-namespace:WPFTaskbarNotifier;assembly=WPFTaskbarNotifier"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{StaticResource MaterialDesignFont}"
+    
+    Title="WPF Taskbar Notifier Example" Height="500"  Width="600"
+                    
+    x:Name="ThisControl"
+    >
+  <tn:TaskbarNotifier.Resources>
+
+    <DataTemplate x:Key="ItemsTemplate">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="100" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="0,5,0,0" VerticalAlignment="Top" Orientation="Horizontal">
+          <TextBlock  Text="{Binding Path=Title}" />
+          <TextBlock Text=": " />
+        </StackPanel>
+                
+        <Label Grid.Column="1" Margin="0,-1,0,0" HorizontalAlignment="Left" ToolTip="Click to open">
+          <Hyperlink Click="Item_Click" Tag="{Binding}">
+            <TextBlock Text="{Binding Path=Message}" TextWrapping="Wrap" />
+          </Hyperlink>
+        </Label>
+      </Grid>
+    </DataTemplate>
+
+    <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame  KeyTime="0" Value="50"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="200"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame  KeyTime="0" Value="200"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="50"></EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </tn:TaskbarNotifier.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuOpen">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"></BeginStoryboard>
+        </EventTrigger>
+                <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuClose">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"></BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+  <!--<Border BorderThickness="1" BorderBrush="#fff1efe2">
+    <Border BorderThickness="1" BorderBrush="#ffffffff">
+      <Border BorderThickness="1" BorderBrush="#ffd4d0c8">
+        <Grid Margin="5,5,5,5">
+          <Grid.RowDefinitions>
+          
+            <RowDefinition Height="40" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*"  />
+            <RowDefinition Height="5" />
+          </Grid.RowDefinitions>
+          
+          <Label Grid.Row="0" Margin="8,0,8,0" FontSize="25" FontWeight="Bold" Content="EXAMPLE">
+            <Label.Foreground>
+              <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Blue" Offset="0"/>
+                <GradientStop Color="Red" Offset="1"/>
+              </LinearGradientBrush>
+            </Label.Foreground>
+          </Label>
+
+          <Button Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="15" Height="15" Click="HideButton_Click">
+            <Button.ToolTip>Hide</Button.ToolTip>
+            <Image>
+              <Image.Source>
+                <DrawingImage>
+                  <DrawingImage.Drawing>
+                    <GeometryDrawing>
+                      <GeometryDrawing.Pen>
+                        <Pen Brush="Black" Thickness="3"/>
+                      </GeometryDrawing.Pen>
+                      <GeometryDrawing.Geometry >
+                        <GeometryGroup>
+                          <LineGeometry StartPoint="0,0" EndPoint="20,20"/>
+                          <LineGeometry StartPoint="20,0" EndPoint="0,20"/>
+                        </GeometryGroup>
+                      </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                  </DrawingImage.Drawing>
+                </DrawingImage>
+              </Image.Source>
+            </Image>
+          </Button>
+
+          <Path Grid.Row="3" Stretch="Fill" Margin="0,0,0,0" VerticalAlignment="Top" Height="1" Data="M0,64 L608,64">
+            <Path.Stroke>
+              <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" MappingMode="RelativeToBoundingBox" SpreadMethod="Repeat">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="Blue" Offset="0.1"/>
+                <GradientStop Color="Red" Offset="0.9"/>
+                <GradientStop Color="White" Offset="1"/>
+              </LinearGradientBrush>
+            </Path.Stroke>
+          </Path>
+
+          <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl Name="ItemsList"  BorderThickness="0"
+                       ItemsSource="{Binding ElementName=ThisControl, Path=NotifyContent}"
+                       ItemTemplate="{StaticResource ItemsTemplate}" >
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <StackPanel Orientation="Vertical" Width="Auto"/>
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+            </ItemsControl>
+          </ScrollViewer>
+        
+          <Path Grid.Row="1" Stretch="Fill" Margin="0,0,0,0" VerticalAlignment="Top" Height="1" Data="M0,64 L608,64">
+            <Path.Stroke>
+              <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" MappingMode="RelativeToBoundingBox" SpreadMethod="Repeat">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="Blue" Offset="0.1"/>
+                <GradientStop Color="Red" Offset="0.9"/>
+                <GradientStop Color="White" Offset="1"/>
+              </LinearGradientBrush>
+            </Path.Stroke>
+          </Path>
+
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" >Name</TextBlock>
+                            <TextBox Grid.Column="1" Margin="0 8 0 8" VerticalAlignment="Center" ></TextBox>
+                            <Button Grid.Column="2">Submit</Button>
+
+                        </Grid>
+                    </StackPanel>
+
+                </Grid>
+
+      </Border>
+    </Border>
+  </Border>
+</tn:TaskbarNotifier>-->
+
+    <Border BorderThickness="3" BorderBrush="#fff1efe2"  >
+        <!--<ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">-->
+            <Grid>
+                
+                
+                <Grid Height="70" VerticalAlignment="Top" Background="#3C8DBC" >
+                    <TextBlock FontSize="22" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+                SAY-NET
+
+                    </TextBlock>
+                    <StackPanel   VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="WhiteSmoke">SAY-NET Kullanıcısı</TextBlock>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
+                            <materialDesign:PackIcon Kind="Bell"></materialDesign:PackIcon>
+                        </Button>
+                        <Button x:Name="ButtonTopMenuClose" Click="ButtonTopMenuClose_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
+                            <materialDesign:PackIcon Kind="Power"></materialDesign:PackIcon>
+                        </Button>
+                        <materialDesign:PopupBox Foreground="White"  Margin="5 10 10 10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                            <StackPanel Width="150">
+                                <!--<ListView>
+                            <ListViewItem VerticalAlignment="Center" Height="50">
+
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ViewDashboard" Height="35" VerticalAlignment="Center"></materialDesign:PackIcon>
+                                    <TextBlock VerticalAlignment="Center" Margin="10 10">Ana Sayfa</TextBlock>
+                                </StackPanel>
+                            </ListViewItem>
+                        </ListView>-->
+                                <Button Content="Hesabım"></Button>
+                                <Button Content="Ayarlar"></Button>
+                                <Button Content="Yardım" x:Name="ButtonPopupHelp" Click="ButtonPopupHelp_Click"></Button>
+                                <Separator></Separator>
+                                <Button x:Name="ButtonPopupClose" Content="Kapat" Click="ButtonPopupClose_Click"></Button>
+                                <Button x:Name="ButtonPopupLogout" Click="ButtonPopupLogout_Click" Content="Çıkış" ></Button>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+
+                    </StackPanel>
+
+                </Grid>
+            <Grid Height="90" Width="542" Margin="0 72 0 0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <materialDesign:Card Margin="0 0 0  0" 
+                materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                Padding="12 12 12 12"  HorizontalContentAlignment="Center" >
+                    
+                    <ContentPresenter x:Name="BreadcrumbContent"  HorizontalAlignment="Right" Content="CUSTOM CLIP">
+                        
+                    </ContentPresenter>
+                    
+                </materialDesign:Card>
+            </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="50" Background="#2C3B41">
+                        <StackPanel>
+                            <Grid  Height="70" Background="#222D32">
+                                <Button Visibility="Collapsed" x:Name="ButtonMenuClose"  Click="ButtonMenuClose_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                    <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
+                                </Button>
+                                <Button x:Name="ButtonMenuOpen" Click="ButtonMenuOpen_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                    <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
+                                </Button>
+                            </Grid>
+                            <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="WhiteSmoke">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <EventSetter Event="PreviewMouseDown" Handler="ListViewItem_PreviewMouseDown" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListViewItem Height="50" x:Name="HomeOpener" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Home" Height="35" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
+                                        <TextBlock VerticalAlignment="Center" Margin="10 10">Ana Sayfa</TextBlock>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Height="60" x:Name="ExpandersOpener">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="AccountCardDetails" Height="35" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
+                                        <TextBlock VerticalAlignment="Center" Margin="10 10">Ana Sayfa</TextBlock>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Height="60" x:Name="HotDrinksOpener" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Tea" Height="35"  Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
+                                        <TextBlock VerticalAlignment="Center" Margin="10 10">Sıcak İçecek</TextBlock>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Height="60" x:Name="ColdDrinksOpener" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Beer" Height="35"  Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
+                                        <TextBlock VerticalAlignment="Center" Margin="10 10">Soğuk İçecek</TextBlock>
+                                    </StackPanel>
+                                </ListViewItem>
+
+                            </ListView>
+                        </StackPanel>
+                    </Grid>
+                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0 115 0 0">
+                    <Grid HorizontalAlignment="Left"    >
+                        <Grid.ColumnDefinitions  >
+                            <ColumnDefinition Width="530" ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="20 20 0 0"  >
+                            
+                                <Frame NavigationUIVisibility="Hidden" x:Name="BoardFrame" ></Frame>
+                            
+                        </StackPanel>
+
+
+
+                    </Grid>
+                </ScrollViewer>
+                </StackPanel>
+
+
+                <!--<StackPanel Margin="20">
+            
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Grid.Column="0"></materialDesign:PackIcon>
+                <TextBlock Grid.Column="1" Margin="8 0 0 0" VerticalAlignment="Center" >Name</TextBlock>
+                <TextBox Grid.Column="2" Margin="8 0 0 0" VerticalAlignment="Center" ></TextBox>
+                <Button Grid.Column="3" Margin="8 0 4 0">Submit</Button>
+
+            </Grid>
+            <Grid>
+                <StackPanel>
+
+
+                </StackPanel>
+                <ToggleButton
+                  Content="C"
+                  Style="{StaticResource MaterialDesignActionLightToggleButton}"
+                  IsChecked="True"
+                  ToolTip="MaterialDesignActionLightToggleButton" />
+
+            </Grid>
+        </StackPanel>-->
+
+
+            </Grid>
+
+        <!--</ScrollViewer>-->
+    
+    </Border>
+
+
+</tn:TaskbarNotifier>
