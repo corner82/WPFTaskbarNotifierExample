@@ -12,11 +12,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WPFTaskbarNotifierExample")]
+[assembly: AssemblyTitle("SayYardimiciHizmetler")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VirtualScopics, Inc.")]
-[assembly: AssemblyProduct("WPFTaskbarNotifierExample")]
+[assembly: AssemblyProduct("SayYardimiciHizmetler")]
 [assembly: AssemblyCopyright("Copyright @ VirtualScopics, Inc. 2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

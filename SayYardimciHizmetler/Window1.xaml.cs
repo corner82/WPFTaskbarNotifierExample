@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace WPFTaskbarNotifierExample
+namespace SayYardimiciHizmetler
 {
     /// <summary>
     /// An example window that adds content to the TaskbarNotifier and changes

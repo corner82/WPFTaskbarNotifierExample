@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFTaskbarNotifierExample
+namespace SayYardimiciHizmetler
 {
     /// <summary>
     /// Interaction logic for ColdDrinks.xaml
@@ -25,14 +25,14 @@ namespace WPFTaskbarNotifierExample
         {
             InitializeComponent();
             
-            this.TestItemsControl.ItemsSource = new ObservableCollection<Person>()
+            /*this.TestItemsControl.ItemsSource = new ObservableCollection<Person>()
             {
                 new Person(),
                 new Person(),
                 new Person(),
                 new Person(),
                 new Person()
-            };
+            };*/
             
         }
     }

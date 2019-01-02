@@ -14,7 +14,7 @@ using System.Collections.ObjectModel;
 using WPFTaskbarNotifier;
 using Microsoft.AspNet.SignalR.Client;
 
-namespace WPFTaskbarNotifierExample
+namespace SayYardimiciHizmetler
 {
     /// <summary>
     /// This is just a mock object to hold something of interest. 
@@ -183,6 +183,9 @@ namespace WPFTaskbarNotifierExample
         {
             ButtonMenuOpen.Visibility = Visibility.Collapsed;
             ButtonMenuClose.Visibility = Visibility.Visible;
+            //var tt = MainScrollViewer.ComputedHorizontalScrollBarVisibility;
+            //this.MainScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
+            
         }
 
         

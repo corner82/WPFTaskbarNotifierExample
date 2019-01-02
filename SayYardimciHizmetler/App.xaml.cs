@@ -5,7 +5,7 @@ using System.Xml;
 using System.Configuration;
 using System.Windows.Threading;
 
-namespace WPFTaskbarNotifierExample
+namespace SayYardimiciHizmetler
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -21,6 +21,7 @@ namespace WPFTaskbarNotifierExample
 
             Current.DispatcherUnhandledException += ProcessDispatcherException;
             AppDomain.CurrentDomain.UnhandledException += ProcessUnhandledException;
+            
              
         }
 
@@ -29,7 +30,7 @@ namespace WPFTaskbarNotifierExample
             Exception e = (Exception)args.ExceptionObject;
             Console.WriteLine("MyHandler caught : " + e.Message);
             Console.WriteLine("Runtime terminating: {0}", args.IsTerminating);
-            //Process.Start(@"C:\Users\M. Zeynel Daðlý\Documents\Visual Studio 2017\Projects\WPFTaskbarNotifier_src\WPFTaskbarNotifierExample\WPFTaskbarNotifierExample\bin\Debug\WPFTaskbarNotifierExample.exe");
+            //Process.Start(@"C:\Users\M. Zeynel Daðlý\Documents\Visual Studio 2017\Projects\WPFTaskbarNotifier_src\SayYardimiciHizmetler\SayYardimiciHizmetler\bin\Debug\SayYardimiciHizmetler.exe");
         }
 
         private void ProcessDispatcherException(object sender, DispatcherUnhandledExceptionEventArgs e)

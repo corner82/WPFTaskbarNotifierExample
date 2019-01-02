@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFTaskbarNotifierExample
+namespace SayYardimiciHizmetler
 {
     /// <summary>
     /// Interaction logic for DashBoard.xaml
