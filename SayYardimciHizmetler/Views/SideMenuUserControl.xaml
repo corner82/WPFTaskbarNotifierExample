@@ -11,8 +11,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" 
               >
-
-    
     <StackPanel>
         <Button Name="TT"  Content="test" Command="{Binding TestCommand, diag:PresentationTraceSources.TraceLevel=High}" ></Button>
         <Button Name="TD"  Content="delete" Command="{Binding DeleteCommand, diag:PresentationTraceSources.TraceLevel=High}" ></Button>
@@ -21,25 +19,21 @@
                 <Style TargetType="ListViewItem" x:Name="HomeOpener">
                     <!--<Setter Property="ListViewItem.Name" Value="{Binding MenuIcon}"/>-->
                     <EventSetter Event="PreviewMouseDown" Handler="ListViewItem_PreviewMouseDown" />
-
                 </Style>
             </ListView.ItemContainerStyle>
-
-            <ListView.ItemTemplate  >
-
-                <DataTemplate  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="{Binding MenuIcon}" Height="35" Margin="10"   VerticalAlignment="Center"></materialDesign:PackIcon>
                         <TextBlock  VerticalAlignment="Center" Margin="10 10" Text="{Binding MenuText}">Ana Sayfa</TextBlock>
-
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
-
-
+            <!--<ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>-->
         </ListView>
-        
     </StackPanel>
-        
 </UserControl>

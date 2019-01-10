@@ -112,9 +112,8 @@
                 materialDesign:ShadowAssist.ShadowDepth="Depth2"
                 materialDesign:ShadowAssist.ShadowEdges="Bottom"
                 Padding="12 12 12 12"  HorizontalContentAlignment="Center" >
-                    
+
                     <ContentPresenter x:Name="BreadcrumbContent"  HorizontalAlignment="Right" Content="CUSTOM CLIP">
-                        
                     </ContentPresenter>
                     
                 </materialDesign:Card>
@@ -130,30 +129,7 @@
                                     <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
                                 </Button>
                             </Grid>
-                        <ListView       ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="WhiteSmoke">
-                            <ListView.ItemContainerStyle >
-                                <Style TargetType="ListViewItem" >
-                                    <!--<Setter Property="ListViewItem.Name" Value="{Binding MenuIcon}"/>-->
-                                    <EventSetter Event="PreviewMouseDown" Handler="ListViewItem_PreviewMouseDown"   />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.ItemTemplate  >
-
-                                <DataTemplate  >
-                                    <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="{Binding MenuIcon}" Height="35" Margin="10"  VerticalAlignment="Center"></materialDesign:PackIcon>
-                                        <TextBlock VerticalAlignment="Center" Margin="10 10" Text="{Binding MenuText}">Ana Sayfa</TextBlock>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <!--<ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>-->
-                               
-
-                            </ListView>
+                        
                         <!--<ww:View x:Name="mainView"/>-->
                         <ContentControl x:Name="SideMenuUserControl" />
                             <ww:SidemenuUserControl></ww:SidemenuUserControl>
