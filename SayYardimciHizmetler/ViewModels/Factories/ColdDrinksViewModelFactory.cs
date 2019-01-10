@@ -1,4 +1,5 @@
-﻿using Core.Factory;
+﻿using Core.Common.AppMode;
+using Core.Factory;
 using SayYardimciHizmetler.Models;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,10 @@ namespace SayYardimciHizmetler.ViewModels.Factories
         public object CreateViewModel(DependencyObject sender)
         {
             var vm = new ColdDrinksViewModel();
-            /*if (Designer.IsDesignMode)
-                vm.ServiceLocator.RegisterService<IPeopleDataAccess>(new DesignTimeData.DesignTimePeopleDataAccess());
+            if (Designer.IsDesignMode)
+                vm.ServiceLocator.RegisterServiceObject<IPeopleDataAccess>(new ModelsDesignTime.DesignTimePeopleDataAccess());
             else
-                vm.ServiceLocator.RegisterService<IPeopleDataAccess>(new PeopleDataAccess());*/
-            vm.ServiceLocator.RegisterServiceObject<IPeopleDataAccess>(new PeopleDataAccess());
-           
+                vm.ServiceLocator.RegisterServiceObject<IPeopleDataAccess>(new PeopleDataAccess());
             return vm;
         }
     }

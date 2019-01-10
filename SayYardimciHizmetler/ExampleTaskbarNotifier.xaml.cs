@@ -13,6 +13,9 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using WPFTaskbarNotifier;
 using Microsoft.AspNet.SignalR.Client;
+using System.Reflection;
+using SayYardimciHizmetler.Models;
+using SayYardimciHizmetler.Views;
 
 namespace SayYardimiciHizmetler
 {
@@ -60,7 +63,75 @@ namespace SayYardimiciHizmetler
         public ExampleTaskbarNotifier()
         {
             InitializeComponent();
-            ConnectAsync();
+            //ConnectAsync();
+
+            // Register the Bubble Event Handler 
+            AddHandler(SidemenuUserControl.TestRoutedEvent,
+                new RoutedEventHandler(Window_UserControl_SettingConfirmedEventHandlerMethod));
+
+        }
+
+        private void Window_UserControl_SettingConfirmedEventHandlerMethod(object sender,
+              RoutedEventArgs e)
+        {
+           //MessageBox.Show("routed event bubbled");
+            var item = e.OriginalSource as ListViewItem;
+            if(item != null)
+            {
+                var dc = item.DataContext as SideMenu;
+                if(dc != null)
+                {
+                    this.BoardFrame.Content = null;
+                    
+                    switch (dc.MenuIcon)
+                    {
+                        //case "HomeOpener":
+                        case "Home":
+                            {
+                               // this.TestContentControl.Content = new HotDrinks();
+                                this.BoardFrame.Content = new DashBoard();
+                                this.BreadcrumbContent.Content = "Ana Sayfa";
+                                break;
+                            }
+                        //case "ExpandersOpener":
+                        case "AccountCardDetails":
+                            {
+                                this.BoardFrame.Content = new Expanders();
+                                this.BreadcrumbContent.Content = "Expanders";
+                                break;
+                            }
+                        //case "HotDrinksOpener":
+                        case "Tea":
+                            {
+                                this.BoardFrame.Content = new HotDrinks();
+                                this.BreadcrumbContent.Content = "Hot Drinks";
+                                break;
+                            }
+                        //case "ColdDrinksOpener":
+                        case "Beer":
+                            {
+
+                                this.BoardFrame.Content = new ColdDrinks();
+                                this.BreadcrumbContent.Content = "Cold Drinks";
+                                break;
+                            }
+                        default:
+                            MessageBox.Show("default");
+                            break;
+
+                    }
+                } else
+                {
+                    throw new InvalidCastException();
+                }
+            } else
+            {
+                throw new InvalidCastException();
+            }
+
+
+            
+            
         }
 
         private async void ConnectAsync()
@@ -204,30 +275,33 @@ namespace SayYardimiciHizmetler
         private void ListViewItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var item = sender as ListViewItem;
+            var dc = item.DataContext as SideMenu;
             if (item != null)
             {
                 this.BoardFrame.Content = null;
-                switch (item.Name)
+                //switch (item.Name)
+                /*switch(dc.MenuIcon)
                 {
-                    case "HomeOpener":
+                    case "Home":
                         {
+
                             this.BoardFrame.Content = new DashBoard();
                             this.BreadcrumbContent.Content = "Ana Sayfa";
                             break;
                         }
-                    case "ExpandersOpener":
+                    case "AccountCardDetails":
                         {
                             this.BoardFrame.Content = new Expanders();
                             this.BreadcrumbContent.Content = "Expanders";
                             break;
                         }
-                    case "HotDrinksOpener":
+                    case "Tea":
                         {
                             this.BoardFrame.Content = new HotDrinks();
                             this.BreadcrumbContent.Content = "Hot Drinks";
                             break;
                         }
-                    case "ColdDrinksOpener":
+                    case "Beer":
                         {
 
                             this.BoardFrame.Content = new ColdDrinks();
@@ -238,8 +312,16 @@ namespace SayYardimiciHizmetler
                         MessageBox.Show("default");
                         break;
 
-                }
+                }*/
             }
         }
+
+        private void SideMenuLoaded(object sender, RoutedEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            e.Handled = true;
+        }
+
+
     }
 }

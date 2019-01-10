@@ -4,6 +4,8 @@ using System.Data;
 using System.Xml;
 using System.Configuration;
 using System.Windows.Threading;
+using Core.Common.ServiceLocator;
+using SayYardimciHizmetler.Models;
 
 namespace SayYardimiciHizmetler
 {
@@ -17,12 +19,14 @@ namespace SayYardimiciHizmetler
 
         public App()
         {
-            
 
+            ServiceLocatorSingleton.Instance.RegisterServiceObject<ISideMenuDataAccess>(new SideMenuDataAccess());
             Current.DispatcherUnhandledException += ProcessDispatcherException;
             AppDomain.CurrentDomain.UnhandledException += ProcessUnhandledException;
             
-             
+
+
+
         }
 
         private static void ProcessUnhandledException(object sender, UnhandledExceptionEventArgs args)

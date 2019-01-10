@@ -9,7 +9,7 @@ namespace Core.Common.Views
 {
     public class BaseViewModel : NotifyPropertyChangedBase
     {
-
+        
         ServiceLocatorSingleton serviceLocator;
 
         /// <summary>

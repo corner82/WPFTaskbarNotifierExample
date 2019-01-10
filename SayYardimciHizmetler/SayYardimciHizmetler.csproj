@@ -10,7 +10,7 @@
     <OutputType>winexe</OutputType>
     <MinFrameworkVersionRequired>3.0</MinFrameworkVersionRequired>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -106,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SideMenuUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,9 +130,13 @@
     <Compile Include="HotDrinks.xaml.cs">
       <DependentUpon>HotDrinks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModelsDesignTime\DesignTimePeopleDataAccess.cs" />
     <Compile Include="Models\IPeopleDataAccess.cs" />
+    <Compile Include="Models\ISideMenuDataAccess.cs" />
     <Compile Include="Models\PeopleDataAccess.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\SideMenu.cs" />
+    <Compile Include="Models\SideMenuDataAccess.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +149,13 @@
     </Compile>
     <Compile Include="ViewModels\ColdDrinksViewModel.cs" />
     <Compile Include="ViewModels\Factories\ColdDrinksViewModelFactory.cs" />
+    <Compile Include="ViewModels\Factories\SideMenuViewModelFactory.cs" />
+    <Compile Include="ViewModels\Factories\TasbarNotifierViewModelFactory.cs" />
+    <Compile Include="ViewModels\SideMenuViewModel.cs" />
+    <Compile Include="ViewModels\TaskbarNotifierViewModel.cs" />
+    <Compile Include="Views\SideMenuUserControl.xaml.cs">
+      <DependentUpon>SideMenuUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
       <SubType>Code</SubType>
