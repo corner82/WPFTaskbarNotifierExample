@@ -66,13 +66,13 @@ namespace SayYardimiciHizmetler
             //ConnectAsync();
 
             // Register the Bubble Event Handler 
-            AddHandler(SidemenuUserControl.TestRoutedEvent,
-                new RoutedEventHandler(Window_UserControl_SettingConfirmedEventHandlerMethod));
+            AddHandler(SidemenuUserControl.SidemenuNavEvent,
+                new RoutedEventHandler(SidemenuUserControl_NavEventHandlerMethod));
 
         }
 
-        private void Window_UserControl_SettingConfirmedEventHandlerMethod(object sender,
-              RoutedEventArgs e)
+        private void SidemenuUserControl_NavEventHandlerMethod(object sender,
+                                                               RoutedEventArgs e)
         {
            //MessageBox.Show("routed event bubbled");
             var item = e.OriginalSource as ListViewItem;
@@ -82,7 +82,6 @@ namespace SayYardimiciHizmetler
                 if(dc != null)
                 {
                     this.BoardFrame.Content = null;
-                    
                     switch (dc.MenuIcon)
                     {
                         //case "HomeOpener":
@@ -93,21 +92,18 @@ namespace SayYardimiciHizmetler
                                 this.BreadcrumbContent.Content = "Ana Sayfa";
                                 break;
                             }
-                        //case "ExpandersOpener":
                         case "AccountCardDetails":
                             {
                                 this.BoardFrame.Content = new Expanders();
                                 this.BreadcrumbContent.Content = "Expanders";
                                 break;
                             }
-                        //case "HotDrinksOpener":
                         case "Tea":
                             {
                                 this.BoardFrame.Content = new HotDrinks();
                                 this.BreadcrumbContent.Content = "Hot Drinks";
                                 break;
                             }
-                        //case "ColdDrinksOpener":
                         case "Beer":
                             {
 
@@ -270,56 +266,6 @@ namespace SayYardimiciHizmetler
         {
             //this.ForceHidden();
             this.BoardFrame.Content = new Expanders();
-        }
-
-        private void ListViewItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var item = sender as ListViewItem;
-            var dc = item.DataContext as SideMenu;
-            if (item != null)
-            {
-                this.BoardFrame.Content = null;
-                //switch (item.Name)
-                /*switch(dc.MenuIcon)
-                {
-                    case "Home":
-                        {
-
-                            this.BoardFrame.Content = new DashBoard();
-                            this.BreadcrumbContent.Content = "Ana Sayfa";
-                            break;
-                        }
-                    case "AccountCardDetails":
-                        {
-                            this.BoardFrame.Content = new Expanders();
-                            this.BreadcrumbContent.Content = "Expanders";
-                            break;
-                        }
-                    case "Tea":
-                        {
-                            this.BoardFrame.Content = new HotDrinks();
-                            this.BreadcrumbContent.Content = "Hot Drinks";
-                            break;
-                        }
-                    case "Beer":
-                        {
-
-                            this.BoardFrame.Content = new ColdDrinks();
-                            this.BreadcrumbContent.Content = "Cold Drinks";
-                            break;
-                        }
-                    default:
-                        MessageBox.Show("default");
-                        break;
-
-                }*/
-            }
-        }
-
-        private void SideMenuLoaded(object sender, RoutedEventArgs e)
-        {
-            var item = sender as ListViewItem;
-            e.Handled = true;
         }
 
 

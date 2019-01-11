@@ -28,14 +28,12 @@ namespace Core.Factory.Views
         public static void OnFactoryTypeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             FrameworkElement element = (FrameworkElement)d ;
-            //ItemsControl element = (ItemsControl)d;
-            IFactory factory = Activator.CreateInstance(GetFactoryType(d)) as IFactory;
+            IFactoryViewModel factory = Activator.CreateInstance(GetFactoryType(d)) as IFactoryViewModel;
             if (factory == null)
-                throw new InvalidOperationException("You have to specify a type that inherits from IFactory");
+                throw new ArgumentException("You have to specify a type that inherits from IFactory");
             element.DataContext = factory.CreateViewModel(d);
             //var vm = factory.CreateViewModel(d);
             //element.ItemsSource = vm.ServiceLocator.GetService<IPeopleDataAccess>();
-
         }
 
         #endregion

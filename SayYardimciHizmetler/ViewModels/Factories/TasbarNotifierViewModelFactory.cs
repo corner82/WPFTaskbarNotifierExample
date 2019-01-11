@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace SayYardimciHizmetler.ViewModels.Factories
 {
-    public class TasbarNotifierViewModelFactory : IFactory
+    public class TasbarNotifierViewModelFactory : IFactoryViewModel
     {
         public object CreateViewModel(DependencyObject sender)
         {

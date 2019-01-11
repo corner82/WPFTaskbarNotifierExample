@@ -50,10 +50,13 @@
     <Compile Include="Common\Commands\RelayCommand.cs" />
     <Compile Include="Common\ServiceLocator\IServiceLocatorWPF.cs" />
     <Compile Include="Common\ServiceLocator\ServiceLocator.cs" />
+    <Compile Include="Common\User\IUser.cs" />
+    <Compile Include="Common\User\UserBase.cs" />
     <Compile Include="Common\User\UserAccessLoader.cs" />
     <Compile Include="Common\Views\BaseViewModel.cs" />
     <Compile Include="Common\Views\NotifyPropertyChangedBase.cs" />
-    <Compile Include="Factory\IFactory.cs" />
+    <Compile Include="Factory\IFactoryUserAccess.cs" />
+    <Compile Include="Factory\IFactoryViewModel.cs" />
     <Compile Include="Factory\Views\ViewModelLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

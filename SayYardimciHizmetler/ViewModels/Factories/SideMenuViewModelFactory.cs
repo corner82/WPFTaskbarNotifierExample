@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace SayYardimciHizmetler.ViewModels.Factories
 {
-    public class SideMenuViewModelFactory : IFactory
+    public class SideMenuViewModelFactory : IFactoryViewModel
     {
         public object CreateViewModel(DependencyObject sender)
         {

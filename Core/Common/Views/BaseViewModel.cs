@@ -1,4 +1,5 @@
 ﻿using Core.Common.ServiceLocator;
+using Core.Common.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,23 @@ namespace Core.Common.Views
 {
     public class BaseViewModel : NotifyPropertyChangedBase
     {
-        
+        private   IUser user;
+
+        /// <summary>
+        /// Gets current user
+        /// </summary>
+        public IUser User
+        {
+            get {
+                    if(user == null)
+                    user = serviceLocator.GetService<IUser>();
+                return user;
+            }
+            
+        }
+
+
+
         ServiceLocatorSingleton serviceLocator;
 
         /// <summary>

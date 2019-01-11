@@ -35,49 +35,38 @@ namespace SayYardimciHizmetler.Views
         }
 
 
-        public static readonly RoutedEvent TestRoutedEvent = EventManager.RegisterRoutedEvent(
-        "TestRouted",
+        public static readonly RoutedEvent SidemenuNavEvent = EventManager.RegisterRoutedEvent(
+        "SidemenuNav",
         RoutingStrategy.Bubble,
         typeof(RoutedEventHandler),
         typeof(SidemenuUserControl));
 
-        public event RoutedEventHandler TestRouted
+        public event RoutedEventHandler SidemenuNav
         {
-            add { AddHandler(TestRoutedEvent, value); }
-            remove { RemoveHandler(TestRoutedEvent, value); }
+            add { AddHandler(SidemenuNavEvent, value); }
+            remove { RemoveHandler(SidemenuNavEvent, value); }
         }
 
         private void ListViewItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
 
             // Raise the custom routed event, this fires the event from the UserControl
-            RaiseEvent(new RoutedEventArgs(SidemenuUserControl.TestRoutedEvent, sender as ListViewItem));
+            RaiseEvent(new RoutedEventArgs(SidemenuUserControl.SidemenuNavEvent, sender as ListViewItem));
 
-
-            //RouteViewer Rv = new RouteViewer(((sender as Button).Tag).ToString());
-            //Rv.Show();
-
-            
-
-
-
-            var item = sender as ListViewItem;
+           /* var item = sender as ListViewItem;
             var dc = item.DataContext as SideMenu;
             var pwindow = Window.GetWindow(this);
-            object obj = pwindow.FindName("BoardFrame");
-            System.Windows.Controls.Frame frame = (System.Windows.Controls.Frame)obj;
+            object parentWindowFrameObj = pwindow.FindName("BoardFrame");
+            System.Windows.Controls.Frame frame = (System.Windows.Controls.Frame) parentWindowFrameObj;
             if (item != null)
             {
-                //this.BoardFrame.Content = null;
-                //switch (item.Name)
                 //frame.Content = null;
-                /*switch (dc.MenuIcon)
+                switch (dc.MenuIcon)
                 {
                     case "Home":
                         {
-                            //frame.Content = new DashBoard();
+                            frame.Content = new DashBoard();
                             //this.BreadcrumbContent.Content = "Ana Sayfa";
-                            frame.Content = new ColdDrinks();
                             break;
                         }
                     
@@ -85,7 +74,6 @@ namespace SayYardimciHizmetler.Views
                         {
                             frame.Content = new Expanders();
                             //this.BreadcrumbContent.Content = "Expanders";
-                            
                             break;
                         }
                     case "Tea":
@@ -104,8 +92,8 @@ namespace SayYardimciHizmetler.Views
                         MessageBox.Show("default");
                         break;
 
-                }*/
-            }
+                }
+            }*/
         }
 
         private void TT_Click(object sender, RoutedEventArgs e)

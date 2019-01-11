@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
-namespace Core.Factory
+namespace Core.Common.User
 {
-    public interface IFactory
+    public interface IUser
     {
-        object CreateViewModel(DependencyObject sender);
     }
 }

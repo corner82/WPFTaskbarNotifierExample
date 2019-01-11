@@ -121,12 +121,14 @@
     <Compile Include="ColdDrinks.xaml.cs">
       <DependentUpon>ColdDrinks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\UserRoleVisibilityConverter.cs" />
     <Compile Include="DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Expanders.xaml.cs">
       <DependentUpon>Expanders.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Factories\UserAccess\OnlyTestUsersAccessFactory.cs" />
     <Compile Include="HotDrinks.xaml.cs">
       <DependentUpon>HotDrinks.xaml</DependentUpon>
     </Compile>

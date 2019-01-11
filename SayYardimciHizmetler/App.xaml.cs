@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Windows.Threading;
 using Core.Common.ServiceLocator;
 using SayYardimciHizmetler.Models;
+using Core.Common.User;
 
 namespace SayYardimiciHizmetler
 {
@@ -19,6 +20,13 @@ namespace SayYardimiciHizmetler
 
         public App()
         {
+
+            // set current user for servicemanager
+            ServiceLocatorSingleton.Instance.RegisterServiceObject<IUser>(new UserBase {
+                                                                                Name = "Mustafa",
+                                                                                SicilNo = 9732,
+                                                                                Surname = "Yetkili"
+                                                                                });
 
             ServiceLocatorSingleton.Instance.RegisterServiceObject<ISideMenuDataAccess>(new SideMenuDataAccess());
             Current.DispatcherUnhandledException += ProcessDispatcherException;
