@@ -1,6 +1,7 @@
 ﻿using Core.Common.AppMode;
 using Core.Factory;
 using SayYardimciHizmetler.Models;
+using SayYardimciHizmetler.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace SayYardimciHizmetler.ViewModels.Factories
+namespace SayYardimciHizmetler.Factories.ViewModels
 {
     public class ColdDrinksViewModelFactory : IFactoryViewModel
     {

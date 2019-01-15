@@ -1,18 +1,19 @@
-﻿using Core.Common.Views;
+﻿using Core.Factory;
 using System;
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
-namespace Core.Factory.Views
+namespace Core.Common.Views
 {
-    public class ViewModelLoader 
+    public class ViewModelLoader
     {
-        
         #region FactoryType
         public static readonly DependencyProperty FactoryTypeProperty =
-            DependencyProperty.RegisterAttached("FactoryType", typeof(Type), typeof(ViewModelLoader), 
-                new FrameworkPropertyMetadata((Type)null, 
+            DependencyProperty.RegisterAttached("FactoryType", typeof(Type), typeof(ViewModelLoader),
+                new FrameworkPropertyMetadata((Type)null,
                 new PropertyChangedCallback(OnFactoryTypeChanged)));
 
         public static Type GetFactoryType(DependencyObject d)
@@ -27,7 +28,7 @@ namespace Core.Factory.Views
 
         public static void OnFactoryTypeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            FrameworkElement element = (FrameworkElement)d ;
+            System.Windows.FrameworkElement element = (FrameworkElement)d;
             IFactoryViewModel factory = Activator.CreateInstance(GetFactoryType(d)) as IFactoryViewModel;
             if (factory == null)
                 throw new ArgumentException("You have to specify a type that inherits from IFactory");
@@ -37,9 +38,5 @@ namespace Core.Factory.Views
         }
 
         #endregion
-
-
-
-        
     }
 }

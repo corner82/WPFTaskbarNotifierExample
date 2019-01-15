@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="SayYardimciHizmetler.Views.TopMenuUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SayYardimciHizmetler.Views"
+             xmlns:vm="clr-namespace:Core.Common.Views;assembly=Core"
+             xmlns:facview="clr-namespace:SayYardimciHizmetler.Factories.ViewModels"
+             xmlns:convert="clr-namespace:SayYardimciHizmetler.Converters"
+             xmlns:us="clr-namespace:Core.Common.User;assembly=Core"
+             xmlns:facaccess="clr-namespace:SayYardimciHizmetler.Factories.UserAccess"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             vm:ViewModelLoader.FactoryType="{x:Type facview:TopMenuButtonsViewModelFactory}"
+             >
+
+    <UserControl.Resources>
+        <convert:TopMenuButonLayoutConverter x:Key="layoutConverter" />
+    </UserControl.Resources>
+
+    <Grid Height="70" VerticalAlignment="Top" Background="#3C8DBC" >
+        <TextBlock FontSize="22" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+                SAY-NET
+        </TextBlock>
+        <StackPanel   VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+            <ListView   Name="TopMenuButtonsUserControlListView"    ItemsSource="{Binding TopMenuButtons}"      ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Foreground="WhiteSmoke">
+                <ListView.ItemContainerStyle >
+                    <Style TargetType="ListViewItem" >
+                        <!--<Setter Property="ListViewItem.Name" Value="{Binding MenuIcon}"/>-->
+                        <!--<EventSetter Event="PreviewMouseDown" Handler="ListViewItem_PreviewMouseDown" />-->
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+
+                        <UniformGrid Columns="{Binding TopMenuButtons.Count, Converter={StaticResource layoutConverter}}" HorizontalAlignment="Right"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Button  Tag="{Binding ButtonName}" Command="{x:Static  local:TopMenuUserControl.CustomRoutedCommand}"  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
+                                <materialDesign:PackIcon Kind="{Binding IconName}"></materialDesign:PackIcon>
+                            </Button>
+                            <!--<Button x:Name="ButtonTopMenuClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Foreground="WhiteSmoke" Background="{x:Null}"  BorderBrush="{x:Null}" HorizontalAlignment="Right" Command="{x:Static  local:TopMenuUserControl.CustomRoutedCommand}"  Content="{Binding ButtonContent}" Margin="5 5 -10 5" >
+                                <materialDesign:PackIcon Kind="Bell"></materialDesign:PackIcon>
+                            </Button>-->
+                            <!--<materialDesign:PackIcon Kind="{Binding MenuIcon}" Height="35" Margin="10"   VerticalAlignment="Center"></materialDesign:PackIcon>
+                        <TextBlock  VerticalAlignment="Center" Margin="10 10" Text="{Binding MenuText}">Ana Sayfa</TextBlock>-->
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <!--<ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>-->
+            </ListView>
+        </StackPanel>
+    </Grid>
+
+    <!--<Grid Height="70" VerticalAlignment="Top" Background="#3C8DBC" >
+        <TextBlock FontSize="22" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+                SAY-NET
+
+        </TextBlock>
+        <StackPanel   VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="WhiteSmoke">SAY-NET Kullanıcısı</TextBlock>
+            <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
+                <materialDesign:PackIcon Kind="Bell"></materialDesign:PackIcon>
+            </Button>
+            <Button x:Name="ButtonTopMenuClose" Click="ButtonTopMenuClose_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
+                <materialDesign:PackIcon Kind="Power"></materialDesign:PackIcon>
+            </Button>
+            <materialDesign:PopupBox Foreground="White"  Margin="5 10 10 10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                <StackPanel Width="150">
+                    <Button Content="Hesabım"></Button>
+                    <Button Content="Ayarlar"></Button>
+                    <Button Content="Yardım" x:Name="ButtonPopupHelp" Click="ButtonPopupHelp_Click"></Button>
+                    <Separator></Separator>
+                    <Button x:Name="ButtonPopupClose" Content="Kapat" Click="ButtonPopupClose_Click"></Button>
+                    <Button x:Name="ButtonPopupLogout" Click="ButtonPopupLogout_Click" Content="Çıkış" ></Button>
+                </StackPanel>
+            </materialDesign:PopupBox>
+
+        </StackPanel>
+
+    </Grid>-->
+</UserControl>

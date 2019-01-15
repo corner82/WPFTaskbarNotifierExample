@@ -55,9 +55,9 @@
     <Compile Include="Common\User\UserAccessLoader.cs" />
     <Compile Include="Common\Views\BaseViewModel.cs" />
     <Compile Include="Common\Views\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Common\Views\ViewModelLoader.cs" />
     <Compile Include="Factory\IFactoryUserAccess.cs" />
     <Compile Include="Factory\IFactoryViewModel.cs" />
-    <Compile Include="Factory\Views\ViewModelLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

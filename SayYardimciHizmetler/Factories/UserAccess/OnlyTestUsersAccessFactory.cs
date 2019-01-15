@@ -16,12 +16,13 @@ namespace SayYardimciHizmetler.Factories.UserAccess
         public void CheckUserAccess(DependencyObject sender)
         {
             var element = sender as FrameworkElement;
+            var cont = element.DataContext;
             UserBase currentUser = ServiceLocatorSingleton.Instance.GetService<IUser>() as UserBase;
             var elementType = element.GetType();
             PropertyInfo propInfo = elementType.GetProperty("Visibility");
             if (propInfo != null)
             {
-                if(currentUser.Name == "Mustafa2")
+                if(currentUser.Name == "Mustafa")
                 propInfo.SetValue(element, Visibility.Hidden);
             }
                 

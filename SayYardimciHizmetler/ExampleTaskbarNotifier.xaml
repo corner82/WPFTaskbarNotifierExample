@@ -3,8 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:vm="clr-namespace:Core.Factory.Views;assembly=Core"
-    xmlns:fac="clr-namespace:SayYardimciHizmetler.ViewModels.Factories"
+    xmlns:vm="clr-namespace:Core.Common.Views;assembly=Core"
+    xmlns:fac="clr-namespace:SayYardimciHizmetler.Factories.ViewModels"
     xmlns:ww="clr-namespace:SayYardimciHizmetler.Views"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextElement.FontWeight="Regular"
@@ -20,27 +20,7 @@
     >
   <tn:TaskbarNotifier.Resources>
 
-    <DataTemplate x:Key="ItemsTemplate">
-      <Grid>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="100" />
-          <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Margin="0,5,0,0" VerticalAlignment="Top" Orientation="Horizontal">
-          <TextBlock  Text="{Binding Path=Title}" />
-          <TextBlock Text=": " />
-        </StackPanel>
-                
-        <Label Grid.Column="1" Margin="0,-1,0,0" HorizontalAlignment="Left" ToolTip="Click to open">
-          <Hyperlink Click="Item_Click" Tag="{Binding}">
-            <TextBlock Text="{Binding Path=Message}" TextWrapping="Wrap" />
-          </Hyperlink>
-        </Label>
-      </Grid>
-    </DataTemplate>
+    
 
     <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -69,45 +49,16 @@
     <Border BorderThickness="3" BorderBrush="#fff1efe2"  >
         <!--<ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">-->
             <Grid>
+
+
+            <!--<ContentControl x:Name="TopMenuUserControlContentControl" >
                 
-                
-                <Grid Height="70" VerticalAlignment="Top" Background="#3C8DBC" >
-                    <TextBlock FontSize="22" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
-                SAY-NET
+            </ContentControl>-->
+            <ww:TopMenuUserControl></ww:TopMenuUserControl>
 
-                    </TextBlock>
-                    <StackPanel   VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="WhiteSmoke">SAY-NET Kullanıcısı</TextBlock>
-                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
-                            <materialDesign:PackIcon Kind="Bell"></materialDesign:PackIcon>
-                        </Button>
-                        <Button x:Name="ButtonTopMenuClose" Click="ButtonTopMenuClose_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
-                            <materialDesign:PackIcon Kind="Power"></materialDesign:PackIcon>
-                        </Button>
-                        <materialDesign:PopupBox Foreground="White"  Margin="5 10 10 10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
-                            <StackPanel Width="150">
-                                <!--<ListView>
-                            <ListViewItem VerticalAlignment="Center" Height="50">
 
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ViewDashboard" Height="35" VerticalAlignment="Center"></materialDesign:PackIcon>
-                                    <TextBlock VerticalAlignment="Center" Margin="10 10">Ana Sayfa</TextBlock>
-                                </StackPanel>
-                            </ListViewItem>
-                        </ListView>-->
-                                <Button Content="Hesabım"></Button>
-                                <Button Content="Ayarlar"></Button>
-                                <Button Content="Yardım" x:Name="ButtonPopupHelp" Click="ButtonPopupHelp_Click"></Button>
-                                <Separator></Separator>
-                                <Button x:Name="ButtonPopupClose" Content="Kapat" Click="ButtonPopupClose_Click"></Button>
-                                <Button x:Name="ButtonPopupLogout" Click="ButtonPopupLogout_Click" Content="Çıkış" ></Button>
-                            </StackPanel>
-                        </materialDesign:PopupBox>
-
-                    </StackPanel>
-
-                </Grid>
-            <Grid Height="90" Width="542" Margin="0 72 0 0" VerticalAlignment="Top" HorizontalAlignment="Right">
+            
+                <Grid Height="90" Width="542" Margin="0 72 0 0" VerticalAlignment="Top" HorizontalAlignment="Right">
                 <materialDesign:Card Margin="0 0 0  0" 
                 materialDesign:ShadowAssist.ShadowDepth="Depth2"
                 materialDesign:ShadowAssist.ShadowEdges="Bottom"
@@ -131,7 +82,7 @@
                             </Grid>
                         
                         <!--<ww:View x:Name="mainView"/>-->
-                        <ContentControl x:Name="SideMenuUserControl" />
+                        <!--<ContentControl x:Name="SideMenuUserControl" />-->
                             <ww:SidemenuUserControl></ww:SidemenuUserControl>
                     </StackPanel>
                     </Grid>

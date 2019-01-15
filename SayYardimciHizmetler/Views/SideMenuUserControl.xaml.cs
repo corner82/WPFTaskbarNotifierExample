@@ -1,6 +1,6 @@
 ﻿using SayYardimciHizmetler.Models;
 using SayYardimciHizmetler.ViewModels;
-using SayYardimciHizmetler.ViewModels.Factories;
+using SayYardimciHizmetler.Factories.ViewModels;
 using SayYardimiciHizmetler;
 using System;
 using System.Collections.Generic;

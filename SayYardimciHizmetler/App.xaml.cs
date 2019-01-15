@@ -28,7 +28,9 @@ namespace SayYardimiciHizmetler
                                                                                 Surname = "Yetkili"
                                                                                 });
 
-            ServiceLocatorSingleton.Instance.RegisterServiceObject<ISideMenuDataAccess>(new SideMenuDataAccess());
+            //ServiceLocatorSingleton.Instance.RegisterServiceObject<ISideMenuDataAccess>(new SideMenuDataAccess());
+            //ServiceLocatorSingleton.Instance.RegisterServiceObject<ITopMenuButtonsDataAccess>(new TopMenuButtonsDataAccess());
+
             Current.DispatcherUnhandledException += ProcessDispatcherException;
             AppDomain.CurrentDomain.UnhandledException += ProcessUnhandledException;
             

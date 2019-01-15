@@ -110,6 +110,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TopMenuUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +125,7 @@
     <Compile Include="ColdDrinks.xaml.cs">
       <DependentUpon>ColdDrinks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\TopMenuButonLayoutConverter.cs" />
     <Compile Include="Converters\UserRoleVisibilityConverter.cs" />
     <Compile Include="DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
@@ -129,16 +134,23 @@
       <DependentUpon>Expanders.xaml</DependentUpon>
     </Compile>
     <Compile Include="Factories\UserAccess\OnlyTestUsersAccessFactory.cs" />
+    <Compile Include="Factories\ViewModels\ColdDrinksViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\SideMenuViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\TasbarNotifierViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\TopMenuButtonsViewModelFactory.cs" />
     <Compile Include="HotDrinks.xaml.cs">
       <DependentUpon>HotDrinks.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelsDesignTime\DesignTimePeopleDataAccess.cs" />
     <Compile Include="Models\IPeopleDataAccess.cs" />
     <Compile Include="Models\ISideMenuDataAccess.cs" />
+    <Compile Include="Models\ITopMenuButtonsDataAccess.cs" />
     <Compile Include="Models\PeopleDataAccess.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\SideMenu.cs" />
     <Compile Include="Models\SideMenuDataAccess.cs" />
+    <Compile Include="Models\TopMenuButton.cs" />
+    <Compile Include="Models\TopMenuButtonsDataAccess.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,13 +162,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ColdDrinksViewModel.cs" />
-    <Compile Include="ViewModels\Factories\ColdDrinksViewModelFactory.cs" />
-    <Compile Include="ViewModels\Factories\SideMenuViewModelFactory.cs" />
-    <Compile Include="ViewModels\Factories\TasbarNotifierViewModelFactory.cs" />
     <Compile Include="ViewModels\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\TaskbarNotifierViewModel.cs" />
+    <Compile Include="ViewModels\TopMenuButtonsViewModel.cs" />
     <Compile Include="Views\SideMenuUserControl.xaml.cs">
       <DependentUpon>SideMenuUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TopMenuUserControl.xaml.cs">
+      <DependentUpon>TopMenuUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>

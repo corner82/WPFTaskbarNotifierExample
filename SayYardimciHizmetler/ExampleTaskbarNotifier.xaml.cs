@@ -65,12 +65,19 @@ namespace SayYardimiciHizmetler
             InitializeComponent();
             //ConnectAsync();
 
+            #region register routed events
             // Register the Bubble Event Handler 
             AddHandler(SidemenuUserControl.SidemenuNavEvent,
                 new RoutedEventHandler(SidemenuUserControl_NavEventHandlerMethod));
 
+            //regster top menu buttons routed event handler
+            AddHandler(TopMenuUserControl.TopMenuCloseWindowEvent, new RoutedEventHandler(TopMenuUserControl_CloseWindowEventHandlerMethod));
+
+            #endregion
+
         }
 
+        #region routed event handlers
         private void SidemenuUserControl_NavEventHandlerMethod(object sender,
                                                                RoutedEventArgs e)
         {
@@ -129,6 +136,41 @@ namespace SayYardimiciHizmetler
             
             
         }
+
+        private void TopMenuUserControl_CloseWindowEventHandlerMethod(object sender, 
+                                                                        RoutedEventArgs e)
+        {
+            var bt = e.OriginalSource as Button;
+            if(bt != null)
+            {
+                switch(bt.Tag)
+                {
+                    case "TestButton1":
+                        {
+                            this.ForceHidden();
+                            break;
+                        }
+                    case "TestButton2":
+                        {
+                            Application.Current.Shutdown();
+                            break;
+                        }
+                    case "TestButton3":
+                        {
+                            this.ForceHidden();
+                            this.Notify();
+                            break;
+                        }
+                    default:
+                            break;
+                }
+            } else
+            {
+                throw new InvalidCastException();
+            }
+        }
+
+        #endregion 
 
         private async void ConnectAsync()
         {
@@ -255,7 +297,6 @@ namespace SayYardimiciHizmetler
             
         }
 
-        
         private void ButtonMenuClose_Click(object sender, RoutedEventArgs e)
         {
             ButtonMenuOpen.Visibility = Visibility.Visible;
