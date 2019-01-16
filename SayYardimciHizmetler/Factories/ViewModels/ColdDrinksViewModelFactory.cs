@@ -1,6 +1,7 @@
 ﻿using Core.Common.AppMode;
 using Core.Factory;
 using SayYardimciHizmetler.Models;
+using SayYardimciHizmetler.Models.ColdDrinks;
 using SayYardimciHizmetler.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,11 @@ namespace SayYardimciHizmetler.Factories.ViewModels
         public object CreateViewModel(DependencyObject sender)
         {
             var vm = new ColdDrinksViewModel();
-            if (Designer.IsDesignMode)
+            /*if (Designer.IsDesignMode)
                 vm.ServiceLocator.RegisterServiceObject<IPeopleDataAccess>(new ModelsDesignTime.DesignTimePeopleDataAccess());
             else
-                vm.ServiceLocator.RegisterServiceObject<IPeopleDataAccess>(new PeopleDataAccess());
+                vm.ServiceLocator.RegisterServiceObject<IPeopleDataAccess>(new PeopleDataAccess());*/
+            vm.ServiceLocator.RegisterServiceObject<IColdDrinkTypesDataAccess>(new ColdDrinkTypesDataAccess());
             return vm;
         }
     }

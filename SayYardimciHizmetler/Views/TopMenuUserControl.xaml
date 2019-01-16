@@ -43,20 +43,41 @@
                             <Button  Tag="{Binding ButtonName}" Command="{x:Static  local:TopMenuUserControl.CustomRoutedCommand}"  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
                                 <materialDesign:PackIcon Kind="{Binding IconName}"></materialDesign:PackIcon>
                             </Button>
-                            <!--<Button x:Name="ButtonTopMenuClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Foreground="WhiteSmoke" Background="{x:Null}"  BorderBrush="{x:Null}" HorizontalAlignment="Right" Command="{x:Static  local:TopMenuUserControl.CustomRoutedCommand}"  Content="{Binding ButtonContent}" Margin="5 5 -10 5" >
-                                <materialDesign:PackIcon Kind="Bell"></materialDesign:PackIcon>
-                            </Button>-->
-                            <!--<materialDesign:PackIcon Kind="{Binding MenuIcon}" Height="35" Margin="10"   VerticalAlignment="Center"></materialDesign:PackIcon>
-                        <TextBlock  VerticalAlignment="Center" Margin="10 10" Text="{Binding MenuText}">Ana Sayfa</TextBlock>-->
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <!--<ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>-->
+                
             </ListView>
+            <materialDesign:PopupBox Foreground="White"  Margin="5 10 10 10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                <!--<StackPanel  Orientation="Vertical" HorizontalAlignment="Center">-->
+                    <ListView Foreground="White"   Name="TopMenuButtonsUserControlListView2"    ItemsSource="{Binding TopMenuButtons}"     >
+                        
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+
+                                <UniformGrid Columns="1"  VerticalAlignment="Top" HorizontalAlignment="Stretch" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <!--<StackPanel Orientation="Horizontal">-->
+                                    <Button  Content="{Binding ButtonName}" Tag="{Binding ButtonName}" Command="{x:Static  local:TopMenuUserControl.CustomRoutedCommand}"></Button>
+                                    <!--<Button  Tag="{Binding ButtonName}" Command="{x:Static  local:TopMenuUserControl.CustomRoutedCommand}"  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Margin="5 5 -10 5" Foreground="WhiteSmoke" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right">
+                                        <materialDesign:PackIcon Kind="{Binding IconName}"></materialDesign:PackIcon>
+                                    </Button>-->
+                                <!--</StackPanel>-->
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                    <!--<Button Content="Hesabım" Command="{x:Static  local:TopMenuUserControl.CustomRoutedCommand}"></Button>
+                    <Button Content="Ayarlar"></Button>
+                    <Button Content="Yardım" x:Name="ButtonPopupHelp" Click="ButtonPopupHelp_Click"></Button>
+                    <Separator></Separator>
+                    <Button x:Name="ButtonPopupClose" Content="Kapat" Click="ButtonPopupClose_Click"></Button>
+                    <Button x:Name="ButtonPopupLogout" Click="ButtonPopupLogout_Click" Content="Çıkış" ></Button>-->
+                <!--</StackPanel>-->
+            </materialDesign:PopupBox>
         </StackPanel>
     </Grid>
 

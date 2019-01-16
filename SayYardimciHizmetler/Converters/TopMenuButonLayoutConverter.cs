@@ -19,7 +19,8 @@ namespace SayYardimciHizmetler.Converters
                 int? val = System.Convert.ToInt16(value);
                 if (val.HasValue)
                 {
-                    return val = val + 1;
+                    //return val = val + 1;
+                    return val = val;
                 } else
                 {
                     return 0;

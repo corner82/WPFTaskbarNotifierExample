@@ -54,7 +54,11 @@
             <!--<ContentControl x:Name="TopMenuUserControlContentControl" >
                 
             </ContentControl>-->
-            <ww:TopMenuUserControl></ww:TopMenuUserControl>
+            <!--<StackPanel Orientation="Horizontal">-->
+                <ww:TopMenuUserControl></ww:TopMenuUserControl>
+                <!--<ww:TopMenuUserControl></ww:TopMenuUserControl>-->
+            <!--</StackPanel>-->
+            
 
 
             
