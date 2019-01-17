@@ -11,12 +11,24 @@ namespace SayYardimciHizmetler.ViewModels
         #region constructor
         public ColdDrinksViewModel()
         {
-
+            //LoadColdDrinkViewModels();
         }
 
         #endregion
 
         #region properties
+        private ObservableCollection<ColdDrinksTypeViewModel> coldDrinkTypes;
+
+        public ObservableCollection<ColdDrinksTypeViewModel> ColdDrinkTypes
+        {
+            get {
+                if (coldDrinkTypes == null)
+                    LoadColdDrinkViewModels();
+                return coldDrinkTypes; }
+            //set { myVar = value; }
+        }
+
+
         private ObservableCollection<IColdDrinkType> coldDrinks;
 
         public ObservableCollection<IColdDrinkType> ColdDrinks
@@ -42,8 +54,32 @@ namespace SayYardimciHizmetler.ViewModels
 
         #endregion
 
+        public void LoadColdDrinkViewModels()
+        {
+            coldDrinkTypes = new ObservableCollection<ColdDrinksTypeViewModel>();
+
+            //get the data access via the service locator.
+            var dataAccess = GetService<IColdDrinkTypesDataAccess>();
+            ObservableCollection<ColdDrinkAttribute> coll;
+            foreach (var item  in dataAccess.GetAllColdDrinks())
+            {
+                this.coldDrinkTypes.Add(new ColdDrinksTypeViewModel()
+                {
+                    ColdDrinksAttr = item.ColdDrinksAttr,
+                    Name = item.Name,
+                    ColdDrinksOrders = item.OrderNumbers,
+                });
+            }
+               
+                /*coldDrinkTypes.Add(new ColdDrinksTypeViewModel() {
+                    ColdDrinksAttr = new 
+                    
+                });*/
+        }
+
         public void LoadColdDrinks()
         {
+            //LoadColdDrinkViewModels();
             coldDrinks = new ObservableCollection<IColdDrinkType>();
 
             //get the data access via the service locator.

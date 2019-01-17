@@ -20,8 +20,6 @@
     >
   <tn:TaskbarNotifier.Resources>
 
-    
-
     <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame  KeyTime="0" Value="50"></EasingDoubleKeyFrame>
@@ -47,53 +45,32 @@
     </Window.Triggers>
 
     <Border BorderThickness="3" BorderBrush="#fff1efe2"  >
-        <!--<ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">-->
-            <Grid>
-
-
+        <Grid>
             <!--<ContentControl x:Name="TopMenuUserControlContentControl" >
-                
-            </ContentControl>-->
-            <!--<StackPanel Orientation="Horizontal">-->
-                <ww:TopMenuUserControl></ww:TopMenuUserControl>
-                <!--<ww:TopMenuUserControl></ww:TopMenuUserControl>-->
-            <!--</StackPanel>-->
-            
-
-
-            
-                <Grid Height="90" Width="542" Margin="0 72 0 0" VerticalAlignment="Top" HorizontalAlignment="Right">
-                <materialDesign:Card Margin="0 0 0  0" 
-                materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                </ContentControl>-->
+            <ww:TopMenuUserControl></ww:TopMenuUserControl>
+            <Grid Height="90" Width="542" Margin="0 72 0 0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <materialDesign:Card Margin="0 0 0  0"  materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom"
                 Padding="12 12 12 12"  HorizontalContentAlignment="Center" >
-
                     <ContentPresenter x:Name="BreadcrumbContent"  HorizontalAlignment="Right" Content="CUSTOM CLIP">
                     </ContentPresenter>
-                    
                 </materialDesign:Card>
             </Grid>
-                <StackPanel Orientation="Horizontal">
-                    <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="50" Background="#2C3B41">
-                        <StackPanel>
-                            <Grid  Height="70" Background="#222D32">
-                                <Button Visibility="Collapsed" x:Name="ButtonMenuClose"  Click="ButtonMenuClose_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
-                                    <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
-                                </Button>
-                                <Button x:Name="ButtonMenuOpen" Click="ButtonMenuOpen_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
-                                    <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
-                                </Button>
-                            </Grid>
-                        
-                        <!--<ww:View x:Name="mainView"/>-->
-                        <!--<ContentControl x:Name="SideMenuUserControl" />-->
-                            <ww:SidemenuUserControl></ww:SidemenuUserControl>
+            <StackPanel Orientation="Horizontal">
+                <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="50" Background="#2C3B41">
+                    <StackPanel>
+                        <Grid  Height="70" Background="#222D32">
+                            <Button Visibility="Collapsed" x:Name="ButtonMenuClose"  Click="ButtonMenuClose_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
+                            </Button>
+                            <Button x:Name="ButtonMenuOpen" Click="ButtonMenuOpen_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
+                            </Button>
+                        </Grid>
+                        <ww:SidemenuUserControl></ww:SidemenuUserControl>
                     </StackPanel>
-                    </Grid>
-                <ScrollViewer Name="MainScrollViewer"
-                              ScrollViewer.VerticalScrollBarVisibility="Auto"
-                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                              Margin="0 115 0 0">
+                </Grid>
+                <ScrollViewer Name="MainScrollViewer" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0 115 0 0">
                     <Grid HorizontalAlignment="Left"    >
                         <Grid.ColumnDefinitions  >
                             <ColumnDefinition Width="530" ></ColumnDefinition>
@@ -101,52 +78,12 @@
                         <StackPanel Grid.Column="0" Margin="20 20 0 0"  >
                             <ContentControl Content="" Name="TestContentControl"></ContentControl>
                             <Frame NavigationUIVisibility="Hidden" x:Name="BoardFrame" ></Frame>
-                            
                         </StackPanel>
-
-
-
                     </Grid>
                 </ScrollViewer>
-                </StackPanel>
+            </StackPanel>
+        </Grid>
 
-
-                <!--<StackPanel Margin="20">
-            
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-
-                </Grid.ColumnDefinitions>
-                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Grid.Column="0"></materialDesign:PackIcon>
-                <TextBlock Grid.Column="1" Margin="8 0 0 0" VerticalAlignment="Center" >Name</TextBlock>
-                <TextBox Grid.Column="2" Margin="8 0 0 0" VerticalAlignment="Center" ></TextBox>
-                <Button Grid.Column="3" Margin="8 0 4 0">Submit</Button>
-
-            </Grid>
-            <Grid>
-                <StackPanel>
-
-
-                </StackPanel>
-                <ToggleButton
-                  Content="C"
-                  Style="{StaticResource MaterialDesignActionLightToggleButton}"
-                  IsChecked="True"
-                  ToolTip="MaterialDesignActionLightToggleButton" />
-
-            </Grid>
-        </StackPanel>-->
-
-
-            </Grid>
-
-        <!--</ScrollViewer>-->
-    
     </Border>
 
 

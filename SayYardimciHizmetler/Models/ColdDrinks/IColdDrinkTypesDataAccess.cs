@@ -9,6 +9,6 @@ namespace SayYardimciHizmetler.Models.ColdDrinks
 {
     public interface IColdDrinkTypesDataAccess
     {
-        ObservableCollection<IColdDrinkType> GetAllColdDrinks();
+        ObservableCollection<ColdDrinkType> GetAllColdDrinks();
     }
 }

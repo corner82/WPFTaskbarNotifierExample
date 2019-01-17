@@ -30,7 +30,8 @@ namespace SayYardimciHizmetler.Models
                 new SideMenu { MenuIcon="Home", MenuText = "Ana Sayfa"},
                 new SideMenu { MenuIcon = "AccountCardDetails", MenuText = "Detaylar" },
                 new SideMenu { MenuIcon = "Tea", MenuText = "Sıcak İçecek"},
-                new SideMenu { MenuIcon = "Beer", MenuText = "Soğuk İçecek"}
+                new SideMenu { MenuIcon = "Beer", MenuText = "Soğuk İçecek"},
+                new SideMenu { MenuIcon = "Transitions", MenuText = "Transition test"}
             };
         }
     }

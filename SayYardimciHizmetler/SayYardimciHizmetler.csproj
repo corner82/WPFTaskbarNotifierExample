@@ -114,6 +114,42 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TransitionsTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransitionTest\Slide1_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransitionTest\Slide2_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransitionTest\Slide3_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransitionTest\Slide4_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransitionTest\Slide5_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransitionTest\Slide6_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransitionTest\Slide7_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TransitionTest\SliderColdDrinks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -167,6 +203,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ColdDrinksTypeViewModel.cs" />
     <Compile Include="ViewModels\ColdDrinksViewModel.cs" />
     <Compile Include="ViewModels\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\TaskbarNotifierViewModel.cs" />
@@ -176,6 +213,33 @@
     </Compile>
     <Compile Include="Views\TopMenuUserControl.xaml.cs">
       <DependentUpon>TopMenuUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionsTestPage.xaml.cs">
+      <DependentUpon>TransitionsTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionTest\Slide1_Intro.xaml.cs">
+      <DependentUpon>Slide1_Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionTest\Slide2_Intro.xaml.cs">
+      <DependentUpon>Slide2_Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionTest\Slide3_Intro.xaml.cs">
+      <DependentUpon>Slide3_Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionTest\Slide4_Intro.xaml.cs">
+      <DependentUpon>Slide4_Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionTest\Slide5_Intro.xaml.cs">
+      <DependentUpon>Slide5_Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionTest\Slide6_Intro.xaml.cs">
+      <DependentUpon>Slide6_Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionTest\Slide7_Intro.xaml.cs">
+      <DependentUpon>Slide7_Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransitionTest\SliderColdDrinks.xaml.cs">
+      <DependentUpon>SliderColdDrinks.xaml</DependentUpon>
     </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Common\AppMode\Designer.cs" />
     <Compile Include="Common\Commands\BaseCommand.cs" />
+    <Compile Include="Common\Commands\Mediator.cs" />
     <Compile Include="Common\Commands\RelayCommand.cs" />
     <Compile Include="Common\ServiceLocator\IServiceLocatorWPF.cs" />
     <Compile Include="Common\ServiceLocator\ServiceLocator.cs" />

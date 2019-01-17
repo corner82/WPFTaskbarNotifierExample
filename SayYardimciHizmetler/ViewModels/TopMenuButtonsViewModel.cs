@@ -1,5 +1,7 @@
-﻿using Core.Common.Views;
+﻿using Core.Common.Commands;
+using Core.Common.Views;
 using SayYardimciHizmetler.Models;
+using SayYardimciHizmetler.Models.ColdDrinks;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +16,9 @@ namespace SayYardimciHizmetler.ViewModels
         #region constructor
         public TopMenuButtonsViewModel()
         {
-
+            #region mediator test
+            Mediator.Register("SelectedDrinkTypeChanged", OnSelectedDrinkTypeChanged);
+            #endregion
         }
         #endregion
 
@@ -41,5 +45,17 @@ namespace SayYardimciHizmetler.ViewModels
                 topMenuButtons.Add(item);
         }
         #endregion
+
+        #region mediator callbacks
+        public void OnSelectedDrinkTypeChanged(object selectedTypeChanged)
+        {
+            ColdDrinkOrderNumber test = (ColdDrinkOrderNumber)selectedTypeChanged;
+        }
+
+        #endregion
+
+
+
+
     }
 }

@@ -16,6 +16,8 @@ using Microsoft.AspNet.SignalR.Client;
 using System.Reflection;
 using SayYardimciHizmetler.Models;
 using SayYardimciHizmetler.Views;
+using Core.Common.Commands;
+using SayYardimciHizmetler.Models.ColdDrinks;
 
 namespace SayYardimiciHizmetler
 {
@@ -75,7 +77,27 @@ namespace SayYardimiciHizmetler
 
             #endregion
 
+            #region mediator test
+            Mediator.Register("ChangeView", OnChangeView);
+
+            Mediator.Register("SelectedDrinkTypeChanged", OnSelectedDrinkTypeChangedBase);
+            #endregion
+
         }
+
+        #region mediator callbacks
+        public void OnChangeView(object show)
+        {
+            bool showView1 = (bool)show;
+            MessageBox.Show("mediator worked");
+            //CurrentView = showView1 ? _view1 : _view2;
+        }
+
+        public void OnSelectedDrinkTypeChangedBase(object selectedTypeChanged)
+        {
+            ColdDrinkOrderNumber test = (ColdDrinkOrderNumber) selectedTypeChanged;
+        }
+        #endregion
 
         #region routed event handlers
         private void SidemenuUserControl_NavEventHandlerMethod(object sender,
@@ -116,6 +138,12 @@ namespace SayYardimiciHizmetler
 
                                 this.BoardFrame.Content = new ColdDrinks();
                                 this.BreadcrumbContent.Content = "Cold Drinks";
+                                break;
+                            }
+                        case "Transitions":
+                            {
+                                this.BoardFrame.Content = new TransitionsTestPage();
+                                this.BreadcrumbContent.Content = "Transitions Test Page";
                                 break;
                             }
                         default:

@@ -10,8 +10,9 @@
       Title="HotDrinks">
 
     <Grid>
-        <TextBlock>Hot drinks</TextBlock>
-        <materialDesign:DrawerHost Margin="64" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}">
+        <StackPanel>
+            <TextBlock>Hot drinks</TextBlock>
+            <materialDesign:DrawerHost Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" BorderBrush="{DynamicResource MaterialDesignDivider}">
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <StackPanel Margin="16">
                     <TextBlock Margin="4" HorizontalAlignment="Center">LEFT FIELD</TextBlock>
@@ -29,7 +30,7 @@
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
             <materialDesign:DrawerHost.TopDrawerContent>
-                <StackPanel Margin="16" HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="0 0 0 0" HorizontalAlignment="Center" Orientation="Horizontal">
                     <TextBlock Margin="4" VerticalAlignment="Center">TOP BANANA</TextBlock>
                     <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
                         Style="{DynamicResource MaterialDesignFlatButton}"
@@ -116,5 +117,6 @@
                 </Grid>
             </Grid>
         </materialDesign:DrawerHost>
+        </StackPanel>
     </Grid>
 </Page>

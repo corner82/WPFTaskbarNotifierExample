@@ -10,9 +10,9 @@ namespace SayYardimciHizmetler.Models.ColdDrinks
 
     public class ColdDrinkTypesDataAccess : IColdDrinkTypesDataAccess
     {
-        private ObservableCollection<IColdDrinkType> coldDrinkTypes;
+        private ObservableCollection<ColdDrinkType> coldDrinkTypes;
 
-        public ObservableCollection<IColdDrinkType> ColdDrinkTypes
+        public ObservableCollection<ColdDrinkType> ColdDrinkTypes
         {
             get {
                 if (coldDrinkTypes == null)
@@ -22,9 +22,9 @@ namespace SayYardimciHizmetler.Models.ColdDrinks
             set { coldDrinkTypes = value; }
         }
 
-        public ObservableCollection<IColdDrinkType> GetAllColdDrinks()
+        public ObservableCollection<ColdDrinkType> GetAllColdDrinks()
         {
-            return new ObservableCollection<IColdDrinkType>() {
+            return new ObservableCollection<ColdDrinkType>() {
                 new ColdDrinkType
                 {
                     ColdDrinksAttr = new ObservableCollection<ColdDrinkAttribute>()
@@ -83,5 +83,15 @@ namespace SayYardimciHizmetler.Models.ColdDrinks
                 }
             };
         }
+
+        /*public ObservableCollection<ColdDrinkAttribute> GetAllColdDrinkAttr()
+        {
+            ObservableCollection<ColdDrinkType> coldDinkTypes = GetAllColdDrinks();
+            ObservableCollection<ColdDrinkAttribute> coldDrinkAttr = new ObservableCollection<ColdDrinkAttribute>();
+            foreach (var item in coldDinkTypes)
+            {
+                //coldDrinkAttr.Add(item.ColdDrinksAttr);
+            }
+        }*/
     }
 }

@@ -1,0 +1,53 @@
+﻿<Page x:Class="SayYardimciHizmetler.Views.TransitionsTestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:SayYardimciHizmetler.Views"
+      xmlns:test="clr-namespace:SayYardimciHizmetler.Views.TransitionTest"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TransitionsTestPage">
+
+    <Grid>
+        <!-- the transitioner will manage your transitions. notice how SelectedIndex is set to zero: the first slide (instead of the default of -1) -->
+        <materialDesign:Transitioner SelectedIndex="0" AutoApplyTransitionOrigins="True">
+            <materialDesign:Transitioner.InputBindings>
+                <KeyBinding Key="Left" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}" />
+                <KeyBinding Key="Right" Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" />
+            </materialDesign:Transitioner.InputBindings>
+            <!-- you can use a slide for each page, let's add a touch of fade for our first page  -->
+            <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+                <test:Slide1_Intro  />
+            </materialDesign:TransitionerSlide>
+            <!-- but you can use bare xaml too -->
+            <test:Slide2_Intro  />
+            <!-- you can control (and create your own) wipes -->
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:SlideWipe Direction="Right" />
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <test:Slide3_Intro  />
+            </materialDesign:TransitionerSlide>
+            <!-- now we are going to slide this in by combining some extra effects.  the inner content slides in, so we'll set the outer background and clip, to keep things nice -->
+            <materialDesign:TransitionerSlide Background="{DynamicResource MaterialDesignDarkBackground}"
+                                Foreground="{DynamicResource MaterialDesignDarkForeground}"
+                                ClipToBounds="True">
+                    <materialDesign:TransitionerSlide.OpeningEffects>
+                    <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:0.8" />
+                    <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.8" OffsetTime="0:0:0.15" />
+                </materialDesign:TransitionerSlide.OpeningEffects>
+                <test:Slide4_Intro  />
+            </materialDesign:TransitionerSlide>
+            <test:Slide5_Intro  />
+            <test:Slide6_Intro  />
+            <test:Slide7_Intro  />
+            <test:SliderColdDrinks  />
+        </materialDesign:Transitioner>
+
+    </Grid>
+</Page>

@@ -10,7 +10,9 @@ namespace Core.Common.Views
 
         protected void RaisePropertyChanged(string propertyName)
         {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         }
 
         #endregion
