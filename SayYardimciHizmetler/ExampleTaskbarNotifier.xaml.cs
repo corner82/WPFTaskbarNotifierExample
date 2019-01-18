@@ -93,7 +93,7 @@ namespace SayYardimiciHizmetler
             //CurrentView = showView1 ? _view1 : _view2;
         }
 
-        public void OnSelectedDrinkTypeChangedBase(object selectedTypeChanged)
+        static public void OnSelectedDrinkTypeChangedBase(object selectedTypeChanged)
         {
             ColdDrinkOrderNumber test = (ColdDrinkOrderNumber) selectedTypeChanged;
         }

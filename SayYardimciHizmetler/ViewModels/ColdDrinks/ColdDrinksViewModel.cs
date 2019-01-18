@@ -1,10 +1,11 @@
 ﻿using Core.Common.Views;
 using SayYardimciHizmetler.Models;
 using SayYardimciHizmetler.Models.ColdDrinks;
+using SayYardimciHizmetler.Models.Drinks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace SayYardimciHizmetler.ViewModels
+namespace SayYardimciHizmetler.ViewModels.ColdDrinks
 {
     public class ColdDrinksViewModel : BaseViewModel
     {
@@ -28,10 +29,9 @@ namespace SayYardimciHizmetler.ViewModels
             //set { myVar = value; }
         }
 
+        private ObservableCollection<IDrinkType> coldDrinks;
 
-        private ObservableCollection<IColdDrinkType> coldDrinks;
-
-        public ObservableCollection<IColdDrinkType> ColdDrinks
+        public ObservableCollection<IDrinkType> ColdDrinks
         {
             get
             {
@@ -41,9 +41,9 @@ namespace SayYardimciHizmetler.ViewModels
             }
         }
 
-        private ColdDrinkAttribute selectedDrinkType;
+        private DrinkAttr selectedDrinkType;
 
-        public ColdDrinkAttribute SelectedDrinkType
+        public DrinkAttr SelectedDrinkType
         {
             get { return  selectedDrinkType; }
             set {
@@ -59,55 +59,30 @@ namespace SayYardimciHizmetler.ViewModels
             coldDrinkTypes = new ObservableCollection<ColdDrinksTypeViewModel>();
 
             //get the data access via the service locator.
-            var dataAccess = GetService<IColdDrinkTypesDataAccess>();
-            ObservableCollection<ColdDrinkAttribute> coll;
+            var dataAccess = GetService<IDrinkTypesDataAccess>();
+            ObservableCollection<DrinkAttr> coll;
             foreach (var item  in dataAccess.GetAllColdDrinks())
             {
                 this.coldDrinkTypes.Add(new ColdDrinksTypeViewModel()
                 {
-                    ColdDrinksAttr = item.ColdDrinksAttr,
+                    ColdDrinksAttr = new ObservableCollection<DrinkAttr>(item.DrinksAttr),
+                    //ColdDrinksAttr = item.DrinksAttr,
                     Name = item.Name,
-                    ColdDrinksOrders = item.OrderNumbers,
+                    ColdDrinksOrders = new ObservableCollection<DrinkOrderNumber>(item.OrderNumbers),
                 });
             }
-               
-                /*coldDrinkTypes.Add(new ColdDrinksTypeViewModel() {
-                    ColdDrinksAttr = new 
-                    
-                });*/
         }
 
         public void LoadColdDrinks()
         {
             //LoadColdDrinkViewModels();
-            coldDrinks = new ObservableCollection<IColdDrinkType>();
+            coldDrinks = new ObservableCollection<IDrinkType>();
 
             //get the data access via the service locator.
-            var dataAccess = GetService<IColdDrinkTypesDataAccess>();
+            var dataAccess = GetService<IDrinkTypesDataAccess>();
             foreach (var item in dataAccess.GetAllColdDrinks())
                 coldDrinks.Add(item);
         }
 
-
-        /*private IList<Person> people;
-        public IList<Person> People
-        {
-            get
-            {
-                if (people == null)
-                    LoadPeople();
-                return people;
-            }
-        }
-
-        public void LoadPeople()
-        {
-            people = new ObservableCollection<Person>();
-
-            //get the data access via the service locator.
-            var dataAccess = GetService<IPeopleDataAccess>();
-            foreach (var item in dataAccess.GetAllPersons())
-                people.Add(item);
-        }*/
     }
 }

@@ -106,6 +106,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ColdDrinks\ColdDrinksAddOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColdDrinks\ColdDrinksOrderItemsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SideMenuUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +178,7 @@
       <DependentUpon>Expanders.xaml</DependentUpon>
     </Compile>
     <Compile Include="Factories\UserAccess\OnlyTestUsersAccessFactory.cs" />
+    <Compile Include="Factories\ViewModels\ColdDrinksOrderItemDetailViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\ColdDrinksViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\SideMenuViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\TasbarNotifierViewModelFactory.cs" />
@@ -180,10 +189,25 @@
     <Compile Include="ModelsDesignTime\DesignTimePeopleDataAccess.cs" />
     <Compile Include="Models\ColdDrinks\ColdDrinkAttribute.cs" />
     <Compile Include="Models\ColdDrinks\ColdDrinkOrderNumber.cs" />
+    <Compile Include="Models\ColdDrinks\ColdDrinksOrderItem.cs" />
     <Compile Include="Models\ColdDrinks\ColdDrinkType.cs" />
     <Compile Include="Models\ColdDrinks\ColdDrinkTypesDataAccess.cs" />
+    <Compile Include="Models\ColdDrinks\IColdDrinksOrderItem.cs" />
+    <Compile Include="Models\ColdDrinks\IColdDrinksOrderItemList.cs" />
     <Compile Include="Models\ColdDrinks\IColdDrinkType.cs" />
     <Compile Include="Models\ColdDrinks\IColdDrinkTypesDataAccess.cs" />
+    <Compile Include="Models\Drinks\DrinkAttr.cs" />
+    <Compile Include="Models\Drinks\DrinkOrder.cs" />
+    <Compile Include="Models\Drinks\DrinkOrderItem.cs" />
+    <Compile Include="Models\Drinks\DrinkOrderNumber.cs" />
+    <Compile Include="Models\Drinks\DrinkType.cs" />
+    <Compile Include="Models\Drinks\DrinkTypesDataAccess.cs" />
+    <Compile Include="Models\Drinks\IDrinkAttr.cs" />
+    <Compile Include="Models\Drinks\IDrinkOrder.cs" />
+    <Compile Include="Models\Drinks\IDrinkOrderItem.cs" />
+    <Compile Include="Models\Drinks\IDrinkOrderNumber.cs" />
+    <Compile Include="Models\Drinks\IDrinkType.cs" />
+    <Compile Include="Models\Drinks\IDrinkTypesDataAccess.cs" />
     <Compile Include="Models\IPeopleDataAccess.cs" />
     <Compile Include="Models\ISideMenuDataAccess.cs" />
     <Compile Include="Models\ITopMenuButtonsDataAccess.cs" />
@@ -203,11 +227,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ColdDrinksTypeViewModel.cs" />
-    <Compile Include="ViewModels\ColdDrinksViewModel.cs" />
+    <Compile Include="ViewModels\ColdDrinks\ColdDrinksOrderItemDetailViewModel.cs" />
+    <Compile Include="ViewModels\ColdDrinks\ColdDrinksTypeViewModel.cs" />
+    <Compile Include="ViewModels\ColdDrinks\ColdDrinksViewModel.cs" />
     <Compile Include="ViewModels\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\TaskbarNotifierViewModel.cs" />
     <Compile Include="ViewModels\TopMenuButtonsViewModel.cs" />
+    <Compile Include="Views\ColdDrinks\ColdDrinksAddOrder.xaml.cs">
+      <DependentUpon>ColdDrinksAddOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ColdDrinks\ColdDrinksOrderItemsList.xaml.cs">
+      <DependentUpon>ColdDrinksOrderItemsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SideMenuUserControl.xaml.cs">
       <DependentUpon>SideMenuUserControl.xaml</DependentUpon>
     </Compile>

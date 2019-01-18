@@ -46,6 +46,15 @@
             <test:Slide5_Intro  />
             <test:Slide6_Intro  />
             <test:Slide7_Intro  />
+            <!--<materialDesign:TransitionerSlide Background="{DynamicResource MaterialDesignDarkBackground}"
+                                Foreground="{DynamicResource MaterialDesignDarkForeground}"
+                                ClipToBounds="True">
+                <materialDesign:TransitionerSlide.OpeningEffects>
+                    <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:0.8" />
+                    <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.8" OffsetTime="0:0:0.15" />
+                </materialDesign:TransitionerSlide.OpeningEffects>
+                <test:SliderColdDrinks  />
+            </materialDesign:TransitionerSlide>-->
             <test:SliderColdDrinks  />
         </materialDesign:Transitioner>
 

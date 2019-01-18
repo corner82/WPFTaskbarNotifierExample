@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SayYardimciHizmetler.Models.ColdDrinks
+namespace SayYardimciHizmetler.Models.Drinks
 {
-    public interface IColdDrinkType
+    public interface IDrinkTypesDataAccess
     {
-       
+        List<DrinkType> GetAllColdDrinks();
     }
 }

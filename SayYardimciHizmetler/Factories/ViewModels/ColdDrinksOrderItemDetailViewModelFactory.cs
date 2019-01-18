@@ -1,9 +1,5 @@
-﻿using Core.Common.AppMode;
-using Core.Factory;
-using SayYardimciHizmetler.Models;
-using SayYardimciHizmetler.Models.ColdDrinks;
+﻿using Core.Factory;
 using SayYardimciHizmetler.Models.Drinks;
-using SayYardimciHizmetler.ViewModels;
 using SayYardimciHizmetler.ViewModels.ColdDrinks;
 using System;
 using System.Collections.Generic;
@@ -14,7 +10,7 @@ using System.Windows;
 
 namespace SayYardimciHizmetler.Factories.ViewModels
 {
-    public class ColdDrinksViewModelFactory : IFactoryViewModel
+    public class ColdDrinksOrderItemDetailViewModelFactory : IFactoryViewModel
     {
         public object CreateViewModel(DependencyObject sender)
         {

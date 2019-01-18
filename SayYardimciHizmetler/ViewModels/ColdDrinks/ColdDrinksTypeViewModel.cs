@@ -1,6 +1,7 @@
 ﻿using Core.Common.Commands;
 using Core.Common.Views;
 using SayYardimciHizmetler.Models.ColdDrinks;
+using SayYardimciHizmetler.Models.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SayYardimciHizmetler.ViewModels
+namespace SayYardimciHizmetler.ViewModels.ColdDrinks
 {
     public class ColdDrinksTypeViewModel : BaseViewModel
     {
@@ -20,25 +21,25 @@ namespace SayYardimciHizmetler.ViewModels
         #endregion
 
         #region properties
-        public ObservableCollection<ColdDrinkAttribute> ColdDrinksAttr { get; set; }
+        public ObservableCollection<DrinkAttr> ColdDrinksAttr { get; set; }
 
-        public ObservableCollection<ColdDrinkOrderNumber> ColdDrinksOrders { get; set; }
+        public ObservableCollection<DrinkOrderNumber> ColdDrinksOrders { get; set; }
 
-        private ColdDrinkAttribute selectedDrinkType;
-        public ColdDrinkAttribute SelectedDrinkType
+        private DrinkAttr selectedDrinkType;
+        public DrinkAttr SelectedDrinkType
         {
             get { return selectedDrinkType; }
             set
             {
                 selectedDrinkType = value;
                 base.RaisePropertyChanged("SelectedDrinkType");
-                Mediator.NotifyColleagues("SelectedDrinkTypeChanged", new ColdDrinkOrderNumber { Id = 1, Name = "Test Order Number" });
+                Mediator.NotifyColleagues("SelectedDrinkTypeChanged", new DrinkOrderNumber { Id = 1, Name = "Test Order Number" });
             }
         }
 
-        private ColdDrinkOrderNumber selectedOrderNumber;
+        private DrinkOrderNumber selectedOrderNumber;
 
-        public ColdDrinkOrderNumber SelectedOrderNumber
+        public DrinkOrderNumber SelectedOrderNumber
         {
             get { return selectedOrderNumber; }
             set {

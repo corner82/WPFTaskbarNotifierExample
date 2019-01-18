@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace SayYardimciHizmetler.Models.ColdDrinks
 {
-    public interface IColdDrinkType
+    public interface IColdDrinksOrderItem
     {
-       
     }
 }

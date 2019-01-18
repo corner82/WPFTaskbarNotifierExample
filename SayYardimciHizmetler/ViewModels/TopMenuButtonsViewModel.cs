@@ -2,6 +2,7 @@
 using Core.Common.Views;
 using SayYardimciHizmetler.Models;
 using SayYardimciHizmetler.Models.ColdDrinks;
+using SayYardimciHizmetler.Models.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,8 +24,8 @@ namespace SayYardimciHizmetler.ViewModels
         #endregion
 
         #region TopMenuButtons
-        private IList<TopMenuButton> topMenuButtons;
-        public IList<TopMenuButton> TopMenuButtons
+        private static IList<TopMenuButton> topMenuButtons;
+        public  IList<TopMenuButton> TopMenuButtons
         {
             get
             {
@@ -35,7 +36,7 @@ namespace SayYardimciHizmetler.ViewModels
 
         }
 
-        public void LoadTopMenuButtons()
+         public void LoadTopMenuButtons()
         {
             topMenuButtons = new ObservableCollection<TopMenuButton>();
 
@@ -47,9 +48,9 @@ namespace SayYardimciHizmetler.ViewModels
         #endregion
 
         #region mediator callbacks
-        public void OnSelectedDrinkTypeChanged(object selectedTypeChanged)
+        static public void OnSelectedDrinkTypeChanged(object selectedTypeChanged)
         {
-            ColdDrinkOrderNumber test = (ColdDrinkOrderNumber)selectedTypeChanged;
+            ColdDrinkOrderNumber test = (DrinkOrderNumber)selectedTypeChanged;
         }
 
         #endregion

@@ -52,6 +52,12 @@ namespace Core.Common.Views
             return serviceLocator.GetService<T>();
         }
 
+        static public T GetServiceStatic<T>()
+        {
+            //return serviceLocator.GetService<T>();
+            return default(T);
+        }
+
         public T GetServiceLazyLoading<T>()
         {
             return serviceLocator.GetServiceLazyLoading<T>();
