@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -48,128 +48,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AmRoMessageDialog, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\AmRoMessageBox.1.1.5\lib\AmRoMessageDialog.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AmRoMessageBox.1.1.5\lib\MaterialDesignColors.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AmRoMessageBox.1.1.5\lib\MaterialDesignThemes.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.4.0\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="ModernMessageBoxLib, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ModernMessageBoxLib.1.3.0\lib\net45\ModernMessageBoxLib.dll</HintPath>
-    </Reference>
-    <Reference Include="mscorlib" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="ShowMeTheXAML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ShowMeTheXAML.1.0.12\lib\net45\ShowMeTheXAML.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.WebRequest" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
-    <Reference Include="ReachFramework" />
-    <Reference Include="System.Printing" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.IdentityModel" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="ColdDrinks.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DashBoard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ExampleTaskbarNotifier.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Expanders.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HotDrinks.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ColdDrinks\ColdDrinksAddOrder.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ColdDrinks\ColdDrinksOrderItemsList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SideMenuUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TopMenuUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionsTestPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionTest\Slide1_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionTest\Slide2_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionTest\Slide3_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionTest\Slide4_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionTest\Slide5_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionTest\Slide6_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionTest\Slide7_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TransitionTest\SliderColdDrinks.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -177,8 +57,6 @@
     <Compile Include="ColdDrinks.xaml.cs">
       <DependentUpon>ColdDrinks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Constants\MessageConstants.cs" />
-    <Compile Include="Constants\OrderConstants.cs" />
     <Compile Include="Converters\TopMenuButonLayoutConverter.cs" />
     <Compile Include="Converters\UserRoleVisibilityConverter.cs" />
     <Compile Include="DashBoard.xaml.cs">
@@ -232,7 +110,6 @@
     <Compile Include="ViewModels\ColdDrinks\ColdDrinksOrderItemsListViewModel.cs" />
     <Compile Include="ViewModels\ColdDrinks\ColdDrinksTypeViewModel.cs" />
     <Compile Include="ViewModels\ColdDrinks\ColdDrinksViewModel.cs" />
-    <Compile Include="ViewModels\ColdDrinks\PropertyChanged.cs" />
     <Compile Include="ViewModels\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\TaskbarNotifierViewModel.cs" />
     <Compile Include="ViewModels\TopMenuButtonsViewModel.cs" />
@@ -310,7 +187,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\UFO.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -320,16 +196,61 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ProfilePic.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Chartridge046_small.jpg" />
-    <Resource Include="Resources\Contact.png" />
-    <Resource Include="Resources\favicon.ico" />
-    <Resource Include="Resources\ms-icon-310x310.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\Core\bin\Debug\Core.dll" />
+    <ReferencePath Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\packages\MaterialDesignColors.1.1.1\lib\net45\MaterialDesignColors.dll" />
+    <ReferencePath Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll" />
+    <ReferencePath Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\packages\Microsoft.AspNet.SignalR.Client.2.4.0\lib\net45\Microsoft.AspNet.SignalR.Client.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" />
+    <ReferencePath Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\ReachFramework.dll" />
+    <ReferencePath Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\packages\ShowMeTheXAML.1.0.12\lib\net45\ShowMeTheXAML.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Drawing.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.IdentityModel.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.WebRequest.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Printing.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Runtime.Serialization.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ServiceModel.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\UIAutomationProvider.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\UIAutomationTypes.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\WindowsBase.dll" />
+    <ReferencePath Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\WPFTaskbarNotifier\bin\Debug\WPFTaskbarNotifier.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\ColdDrinks.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\DashBoard.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\ExampleTaskbarNotifier.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Expanders.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\HotDrinks.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\ColdDrinks\ColdDrinksAddOrder.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\ColdDrinks\ColdDrinksOrderItemsList.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\SideMenuUserControl.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TopMenuUserControl.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionsTestPage.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionTest\Slide1_Intro.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionTest\Slide2_Intro.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionTest\Slide3_Intro.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionTest\Slide4_Intro.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionTest\Slide5_Intro.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionTest\Slide6_Intro.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionTest\Slide7_Intro.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Views\TransitionTest\SliderColdDrinks.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\Window1.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\App.g.cs" />
+    <Compile Include="C:\Users\M. Zeynel Dağlı\Documents\Visual Studio 2017\Projects\SayYardimciHizmetler\SayYardimciHizmetler\obj\Debug\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
 </Project>

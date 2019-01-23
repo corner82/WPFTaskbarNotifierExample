@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SayYardimciHizmetler.ViewModels.ColdDrinks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace SayYardimciHizmetler.Views.ColdDrinks
         public ColdDrinksOrderItemsList()
         {
             InitializeComponent();
+            //this.DataContext = new ColdDrinksOrderItemsListViewModel(Window.GetWindow(this));
+            this.DataContext = new ColdDrinksOrderItemsListViewModel(Application.Current.MainWindow);
         }
     }
 }

@@ -7,6 +7,7 @@
              xmlns:vm="clr-namespace:Core.Common.Views;assembly=Core"
              xmlns:fac="clr-namespace:SayYardimciHizmetler.Factories.ViewModels"
              xmlns:vmodels="clr-namespace:SayYardimciHizmetler.ViewModels.ColdDrinks"
+             
              xmlns:local="clr-namespace:SayYardimciHizmetler.Views.ColdDrinks"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -35,7 +36,7 @@
         <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
             <materialDesign:ColorZone Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="4">
                 <StackPanel Margin="16" Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ZoomOut" Height="32" Width="32" />
+                    <materialDesign:PackIcon Kind="Account" Height="32" Width="32" />
                     <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Margin="16 0 0 0">Soğuk İçecek Sipariş Ekranı</TextBlock>
                 </StackPanel>
             </materialDesign:ColorZone>
@@ -79,8 +80,10 @@
                                             </Button>
                                             <TextBlock Text="{Binding Name}" Margin="8 0 0 0" VerticalAlignment="Center" >
                                             </TextBlock>
+                                            <!--<materialDesign:Snackbar Message="Hello World" Name="testSnackBar" IsActive="True" />-->
                                         </StackPanel>
                                     </materialDesign:ColorZone>
+                                    <!--<materialDesign:Snackbar  HorizontalAlignment="Center"  Message="İşleminiz Başarılı" Name="testSnackBar" IsActive="{Binding}" />-->
                                     <Grid Grid.Row="1" Margin="0 6 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="172">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -89,11 +92,15 @@
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
                                         <ComboBox Grid.Row="0" materialDesign:HintAssist.Hint="OS" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                              IsSynchronizedWithCurrentItem="True"
                                               ItemsSource="{Binding ColdDrinksAttr}"   
                                               SelectedItem="{Binding SelectedDrinkType, Mode=TwoWay}" 
                                               SelectedValue="{Binding SelectedDrinkType, Mode=TwoWay}"
-                                              SelectedValuePath="PropertyName"
+                                              
                                               DisplayMemberPath="PropertyName"
+                                                  
+                                              
+                                              
                                               >
                                         </ComboBox>
                                         <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="OS" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
@@ -110,8 +117,38 @@
                                             <ToggleButton Margin="8 0 0 0"></ToggleButton>
                                         </StackPanel>
                                         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Right">
-                                            <TextBlock VerticalAlignment="Center">Telephone Contact</TextBlock>
-                                            <ToggleButton Margin="8 0 0 0"></ToggleButton>
+                                            <Button Content="Test"   Command="{Binding InsertOrderItemCommand}"   Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"   HorizontalAlignment="Right">
+                                                <!--<materialDesign:PackIcon Kind="Accessibility"></materialDesign:PackIcon>-->
+                                            </Button>
+                                            <ProgressBar
+                                                Height="500"
+                                                Width="25"
+                                               
+                                              Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                              Value="0"
+                                              IsIndeterminate="True" />
+
+
+                                            
+
+                                            <!--<materialDesign:DialogHost CloseOnClickAway="True"
+                                                                       IsOpen="{Binding IsDialogOpen, Mode=TwoWay}"
+                                                                       Identifier="MyDialogHost">-->
+                                                <!--<materialDesign:DialogHost.DialogContentTemplate>
+                                                    <DataTemplate DataType="local:Person">
+                                                        <StackPanel Margin="20">
+                                                            <TextBlock Text="{Binding Name}" />
+                                                            <TextBlock Text="{Binding SurName}" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </materialDesign:DialogHost.DialogContentTemplate>-->
+                                                <!--<materialDesign:DialogHost.DialogContent>
+                                                    <TextBlock Text="A simple dialog" Margin="20"/>
+                                                </materialDesign:DialogHost.DialogContent>-->
+                                                <!--<Button Command="{Binding ShowDialogCommand}" Content="Show Dialog"
+                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0"/>-->
+                                            <!--</materialDesign:DialogHost>-->
+
                                         </StackPanel>
                                     </Grid>
                                 </Grid>
@@ -131,8 +168,8 @@
                     Margin="16">
                 <materialDesign:PackIcon Kind="StepBackward" />
             </Button>
-            <Button Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"                     
-                    Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"
+            <Button Name="tst" Click="btn_Click" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"                     
+                    Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" 
                     VerticalAlignment="Top"
                     Margin="16">
                 <materialDesign:PackIcon Kind="StepForward" />

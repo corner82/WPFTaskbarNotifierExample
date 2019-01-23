@@ -12,5 +12,7 @@ namespace SayYardimciHizmetler.Models.Drinks
         public List<DrinkOrderNumber> OrderNumbers { get; set; }
         public string Name { get; set; }
         public int? BaseTypeID { get; set; }
+        public int DrinkTypeID { get; set; }
+        //public double Price { get; set; }
     }
 }

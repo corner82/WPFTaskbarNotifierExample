@@ -1,6 +1,5 @@
 ﻿using Core.Common.Views;
 using SayYardimciHizmetler.Models;
-using SayYardimciHizmetler.Models.ColdDrinks;
 using SayYardimciHizmetler.Models.Drinks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -60,7 +59,7 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
 
             //get the data access via the service locator.
             var dataAccess = GetService<IDrinkTypesDataAccess>();
-            ObservableCollection<DrinkAttr> coll;
+            //ObservableCollection<DrinkAttr> coll;
             foreach (var item  in dataAccess.GetAllColdDrinks())
             {
                 this.coldDrinkTypes.Add(new ColdDrinksTypeViewModel()
@@ -68,6 +67,8 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                     ColdDrinksAttr = new ObservableCollection<DrinkAttr>(item.DrinksAttr),
                     //ColdDrinksAttr = item.DrinksAttr,
                     Name = item.Name,
+                    DrinkTypeID = item.DrinkTypeID,
+                    //Price = item.Price,
                     ColdDrinksOrders = new ObservableCollection<DrinkOrderNumber>(item.OrderNumbers),
                 });
             }

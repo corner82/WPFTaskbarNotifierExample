@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SayYardimciHizmetler.Models.ColdDrinks
+namespace Core.Common.Views
 {
-    public interface IColdDrinkType
+    public interface IBaseWindow
     {
-       
     }
 }

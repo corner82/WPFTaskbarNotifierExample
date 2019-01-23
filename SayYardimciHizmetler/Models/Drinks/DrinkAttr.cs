@@ -10,5 +10,6 @@ namespace SayYardimciHizmetler.Models.Drinks
     {
         public int Id { get; set; }
         public string PropertyName { get; set; }
+        public double Price { get; set; }
     }
 }

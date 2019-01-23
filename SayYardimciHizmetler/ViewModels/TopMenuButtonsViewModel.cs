@@ -1,7 +1,6 @@
 ﻿using Core.Common.Commands;
 using Core.Common.Views;
 using SayYardimciHizmetler.Models;
-using SayYardimciHizmetler.Models.ColdDrinks;
 using SayYardimciHizmetler.Models.Drinks;
 using System;
 using System.Collections.Generic;
@@ -50,7 +49,7 @@ namespace SayYardimciHizmetler.ViewModels
         #region mediator callbacks
         static public void OnSelectedDrinkTypeChanged(object selectedTypeChanged)
         {
-            ColdDrinkOrderNumber test = (DrinkOrderNumber)selectedTypeChanged;
+            DrinkOrderNumber test = (DrinkOrderNumber)selectedTypeChanged;
         }
 
         #endregion

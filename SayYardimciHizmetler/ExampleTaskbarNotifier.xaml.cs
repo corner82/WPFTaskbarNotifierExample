@@ -17,7 +17,11 @@ using System.Reflection;
 using SayYardimciHizmetler.Models;
 using SayYardimciHizmetler.Views;
 using Core.Common.Commands;
-using SayYardimciHizmetler.Models.ColdDrinks;
+using SayYardimciHizmetler.Models.Drinks;
+using Core.Common.Views;
+using Core.Common.ServiceLocator;
+using ModernMessageBoxLib;
+using SayYardimciHizmetler.Constants;
 
 namespace SayYardimiciHizmetler
 {
@@ -67,6 +71,15 @@ namespace SayYardimiciHizmetler
             InitializeComponent();
             //ConnectAsync();
 
+            Application.Current.MainWindow = this;
+            //var windows = Application.Current.Windows;
+            /*QModernMessageBox.Show(this, "The quick brown fox jumps over the lazy dog.",
+                                    "hello world",
+                                    QModernMessageBox.QModernMessageBoxButtons.YesNoCancel, ModernMessageboxIcons.Warning);*/
+
+            // set current user for servicemanager
+            ServiceLocatorSingleton.Instance.RegisterServiceObject<Window>(Application.Current.MainWindow);
+
             #region register routed events
             // Register the Bubble Event Handler 
             AddHandler(SidemenuUserControl.SidemenuNavEvent,
@@ -78,6 +91,8 @@ namespace SayYardimiciHizmetler
             #endregion
 
             #region mediator test
+            Mediator.Register(MessageConstants.NotifyMessengerBroker.Value, OnSuccesMessenger);
+
             Mediator.Register("ChangeView", OnChangeView);
 
             Mediator.Register("SelectedDrinkTypeChanged", OnSelectedDrinkTypeChangedBase);
@@ -85,17 +100,63 @@ namespace SayYardimiciHizmetler
 
         }
 
+        public void Wait(double seconds, Action action)
+        {
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Interval = (int)(seconds * 1000.0);
+            timer.Elapsed += (s, o) => {
+                timer.Enabled = false;
+                timer.Dispose();
+                action();
+            };
+            timer.Enabled = true;
+        }
+
+
         #region mediator callbacks
+        public void OnSuccesMessenger(object show)
+        {
+            MessageConstants arg = (MessageConstants)show;
+            if(arg != null)
+            {
+                if(arg.Value == MessageConstants.SuccessToken.Value)
+                {
+                    var message = new MaterialDesignThemes.Wpf.SnackbarMessage();
+                    message.Content = MessageConstants.SuccessMessage.Value;
+                    testSnackBar.Message = message;
+                    testSnackBar.IsActive = true;
+                    Wait(3.0, () => {
+                        testSnackBar.Dispatcher.Invoke(() =>
+                        {
+                            testSnackBar.IsActive = false;
+                        });
+                    });
+                } else if(arg.Value == MessageConstants.FailureToken.Value)
+                {
+                    var message = new MaterialDesignThemes.Wpf.SnackbarMessage();
+                    message.Content = MessageConstants.FailureMessage.Value;
+                    testSnackBar.Message = message;
+                    testSnackBar.IsActive = true;
+                    Wait(3.0, () => {
+                        testSnackBar.Dispatcher.Invoke(() =>
+                        {
+                            testSnackBar.IsActive = false;
+                        });
+                    });
+                }
+            }
+        }
+
         public void OnChangeView(object show)
         {
             bool showView1 = (bool)show;
-            MessageBox.Show("mediator worked");
+            //MessageBox.Show("mediator worked");
             //CurrentView = showView1 ? _view1 : _view2;
         }
 
         static public void OnSelectedDrinkTypeChangedBase(object selectedTypeChanged)
         {
-            ColdDrinkOrderNumber test = (ColdDrinkOrderNumber) selectedTypeChanged;
+            DrinkOrderNumber test = (DrinkOrderNumber) selectedTypeChanged;
         }
         #endregion
 

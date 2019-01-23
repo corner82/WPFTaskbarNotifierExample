@@ -2,7 +2,7 @@
 
 namespace Core.Common.Views
 {
-    public class NotifyPropertyChangedBase
+    public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged Members
 
@@ -10,9 +10,16 @@ namespace Core.Common.Views
 
         protected void RaisePropertyChanged(string propertyName)
         {
-
+            /*if(PropertyChanged != null)
+            {
+                OnPropertyChanged(propertyName);
+            }*/
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
+        }
+
+        public virtual void OnPropertyChanged(string propertyName)
+        {
         }
 
         #endregion

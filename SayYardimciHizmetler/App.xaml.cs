@@ -21,6 +21,8 @@ namespace SayYardimiciHizmetler
         public App()
         {
 
+            //Application.Current.MainWindow = this;
+
             // set current user for servicemanager
             ServiceLocatorSingleton.Instance.RegisterServiceObject<IUser>(new UserBase {
                                                                                 Name = "Mustafa",

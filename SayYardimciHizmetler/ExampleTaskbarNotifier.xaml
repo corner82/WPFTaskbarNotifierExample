@@ -18,28 +18,26 @@
                     
     x:Name="ThisControl"
     >
-  <tn:TaskbarNotifier.Resources>
-
-    <Storyboard x:Key="MenuOpen">
+    <tn:TaskbarNotifier.Resources>
+        <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame  KeyTime="0" Value="50"></EasingDoubleKeyFrame>
                 <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="200"></EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-    <Storyboard x:Key="MenuClose">
+        <Storyboard x:Key="MenuClose">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame  KeyTime="0" Value="200"></EasingDoubleKeyFrame>
                 <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="50"></EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-
     </tn:TaskbarNotifier.Resources>
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuOpen">
             <BeginStoryboard Storyboard="{StaticResource MenuOpen}"></BeginStoryboard>
         </EventTrigger>
-                <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuClose">
+                <EventTrigger  RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuClose">
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"></BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
@@ -76,6 +74,30 @@
                             <ColumnDefinition Width="530" ></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="20 0 0 0"  >
+
+
+                            <materialDesign:Snackbar  HorizontalAlignment="Center"  Message="İşleminiz Başarılı" Name="testSnackBar" IsActive="False" />
+
+
+                            <!--<materialDesign:DialogHost CloseOnClickAway="True"
+                                                                       IsOpen="True"
+                                                                       Identifier="MyDialogHost">-->
+                                <!--<materialDesign:DialogHost.DialogContentTemplate>
+                                    <DataTemplate DataType="local:Person">
+                                        <StackPanel Margin="20">
+                                            <TextBlock Text="{Binding Name}" />
+                                            <TextBlock Text="{Binding SurName}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </materialDesign:DialogHost.DialogContentTemplate>-->
+                                <!--<materialDesign:DialogHost.DialogContent>
+                                    <TextBlock Text="A simple dialog" Margin="20"/>
+                                </materialDesign:DialogHost.DialogContent>-->
+                                <!--<Button Command="{Binding ShowDialogCommand}" Content="Show Dialog"
+                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0"/>-->
+                            <!--</materialDesign:DialogHost>-->
+
+
                             <ContentControl Content="" Name="TestContentControl"></ContentControl>
                             <Frame NavigationUIVisibility="Hidden" x:Name="BoardFrame" ></Frame>
                         </StackPanel>

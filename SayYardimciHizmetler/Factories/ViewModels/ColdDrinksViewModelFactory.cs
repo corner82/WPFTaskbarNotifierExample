@@ -1,7 +1,6 @@
 ﻿using Core.Common.AppMode;
 using Core.Factory;
 using SayYardimciHizmetler.Models;
-using SayYardimciHizmetler.Models.ColdDrinks;
 using SayYardimciHizmetler.Models.Drinks;
 using SayYardimciHizmetler.ViewModels;
 using SayYardimciHizmetler.ViewModels.ColdDrinks;

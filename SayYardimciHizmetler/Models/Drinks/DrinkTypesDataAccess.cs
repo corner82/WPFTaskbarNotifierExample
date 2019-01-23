@@ -30,11 +30,13 @@ namespace SayYardimciHizmetler.Models.Drinks
                 {
                     DrinksAttr = new List<DrinkAttr>()
                     {
-                        new DrinkAttr{ Id = 1, PropertyName = "500 ml"},
-                        new DrinkAttr {Id = 2, PropertyName = "1500 ml"}
+                        new DrinkAttr{ Id = 1, PropertyName = "500 ml", Price = 0.5},
+                        new DrinkAttr {Id = 2, PropertyName = "1500 ml", Price = 1}
                     },
+                    DrinkTypeID = 1,
                     Name = "Su",
                     BaseTypeID = 1,
+                    //Price = 0.5,
                     OrderNumbers = new List<DrinkOrderNumber>()
                     {
                         new DrinkOrderNumber{ Id = 1, Name = "1"},
@@ -49,11 +51,13 @@ namespace SayYardimciHizmetler.Models.Drinks
                 {
                     DrinksAttr = new List<DrinkAttr>()
                     {
-                        new DrinkAttr{ Id = 3, PropertyName = "Sade"},
-                        new DrinkAttr {Id = 4, PropertyName = "Limon"},
-                        new DrinkAttr {Id = 5, PropertyName = "Karışık"}
+                        new DrinkAttr{ Id = 3, PropertyName = "Sade", Price = 0.5},
+                        new DrinkAttr {Id = 4, PropertyName = "Limon", Price = 1},
+                        new DrinkAttr {Id = 5, PropertyName = "Karışık", Price = 1}
                     },
+                    DrinkTypeID = 2,
                     Name = "Maden Suyu",
+                    //Price = 1,
                     OrderNumbers = new List<DrinkOrderNumber>()
                     {
                         new DrinkOrderNumber{ Id = 1, Name = "1"},
@@ -68,12 +72,14 @@ namespace SayYardimciHizmetler.Models.Drinks
                 {
                     DrinksAttr = new List<DrinkAttr>()
                     {
-                        new DrinkAttr{ Id = 6, PropertyName = "Karışık"},
-                        new DrinkAttr {Id = 7, PropertyName = "Vişne"},
-                        new DrinkAttr {Id = 8, PropertyName = "Şeftali"}
+                        new DrinkAttr{ Id = 6, PropertyName = "Karışık", Price = 1.5},
+                        new DrinkAttr {Id = 7, PropertyName = "Vişne", Price = 1.5},
+                        new DrinkAttr {Id = 8, PropertyName = "Şeftali", Price = 1.5}
                     },
+                    DrinkTypeID = 3,
                     Name = "Meyve Suyu",
                     BaseTypeID = 1,
+                    //Price = 1.5,
                     OrderNumbers = new List<DrinkOrderNumber>()
                     {
                         new DrinkOrderNumber{ Id = 1, Name = "1"},
