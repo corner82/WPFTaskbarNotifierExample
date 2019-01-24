@@ -83,24 +83,22 @@
                                             <!--<materialDesign:Snackbar Message="Hello World" Name="testSnackBar" IsActive="True" />-->
                                         </StackPanel>
                                     </materialDesign:ColorZone>
-                                    <!--<materialDesign:Snackbar  HorizontalAlignment="Center"  Message="İşleminiz Başarılı" Name="testSnackBar" IsActive="{Binding}" />-->
+                                    <materialDesign:Snackbar  HorizontalAlignment="Center"  Message="İşleminiz Başarılı"  IsActive="{Binding NotifySuccessMessageShow}" />
+                                    <materialDesign:Snackbar  HorizontalAlignment="Center"  Message="İşleminiz Başarısız"  IsActive="{Binding NotifyFailureMessageShow}" />
                                     <Grid Grid.Row="1" Margin="0 6 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="172">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition />
-                                            <RowDefinition />
-                                            <RowDefinition />
-                                            <RowDefinition />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition  />
+                                            <RowDefinition  />
+                                            <RowDefinition Height="*" />
+                                            
                                         </Grid.RowDefinitions>
                                         <ComboBox Grid.Row="0" materialDesign:HintAssist.Hint="OS" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                               IsSynchronizedWithCurrentItem="True"
                                               ItemsSource="{Binding ColdDrinksAttr}"   
                                               SelectedItem="{Binding SelectedDrinkType, Mode=TwoWay}" 
                                               SelectedValue="{Binding SelectedDrinkType, Mode=TwoWay}"
-                                              
                                               DisplayMemberPath="PropertyName"
-                                                  
-                                              
-                                              
                                               >
                                         </ComboBox>
                                         <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="OS" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
@@ -112,43 +110,26 @@
                                               >
                                         </ComboBox>
 
-                                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Right">
+                                        <!--<StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Right">
                                             <TextBlock VerticalAlignment="Center"> Email Contact</TextBlock>
                                             <ToggleButton Margin="8 0 0 0"></ToggleButton>
-                                        </StackPanel>
-                                        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Right">
-                                            <Button Content="Test"   Command="{Binding InsertOrderItemCommand}"   Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"   HorizontalAlignment="Right">
-                                                <!--<materialDesign:PackIcon Kind="Accessibility"></materialDesign:PackIcon>-->
-                                            </Button>
-                                            <ProgressBar
-                                                Height="500"
-                                                Width="25"
-                                               
-                                              Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                              Value="0"
-                                              IsIndeterminate="True" />
-
-
+                                        </StackPanel>-->
+                                        <StackPanel Grid.Row="2"  Orientation="Vertical" Margin="0 15 0 0"  HorizontalAlignment="Center">
+                                            <!--<Button Content="Siparişe Ekle"   Command="{Binding InsertOrderItemCommand}"   
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"   
+                                                    HorizontalAlignment="Right">
+                                            </Button>-->
+                                            <Button
+                                            Content="Siparişe Ekle"
+                                            Command="{Binding InsertOrderItemCommand}" 
+                                            Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                             
+                                            ToolTip="Resource name: MaterialDesignRaisedAccentButton">
 
-                                            <!--<materialDesign:DialogHost CloseOnClickAway="True"
-                                                                       IsOpen="{Binding IsDialogOpen, Mode=TwoWay}"
-                                                                       Identifier="MyDialogHost">-->
-                                                <!--<materialDesign:DialogHost.DialogContentTemplate>
-                                                    <DataTemplate DataType="local:Person">
-                                                        <StackPanel Margin="20">
-                                                            <TextBlock Text="{Binding Name}" />
-                                                            <TextBlock Text="{Binding SurName}" />
-                                                        </StackPanel>
-                                                    </DataTemplate>
-                                                </materialDesign:DialogHost.DialogContentTemplate>-->
-                                                <!--<materialDesign:DialogHost.DialogContent>
-                                                    <TextBlock Text="A simple dialog" Margin="20"/>
-                                                </materialDesign:DialogHost.DialogContent>-->
-                                                <!--<Button Command="{Binding ShowDialogCommand}" Content="Show Dialog"
-                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0"/>-->
-                                            <!--</materialDesign:DialogHost>-->
-
+                                            </Button>
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="3" Margin="0 20 0 0" >
+                                            <ProgressBar Visibility="{Binding LoadingShow}" Opacity="{Binding LoadingShowOpacity}" IsIndeterminate="{Binding LoadingShow}" />
                                         </StackPanel>
                                     </Grid>
                                 </Grid>
@@ -168,7 +149,7 @@
                     Margin="16">
                 <materialDesign:PackIcon Kind="StepBackward" />
             </Button>
-            <Button Name="tst" Click="btn_Click" Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"                     
+            <Button Name="tst" Click="btn_Click" Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"                     
                     Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" 
                     VerticalAlignment="Top"
                     Margin="16">

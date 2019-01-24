@@ -1,5 +1,6 @@
 ﻿using Core.Common.Commands;
 using Core.Common.Views;
+using Core.Utill;
 using MaterialDesignThemes.Wpf;
 using SayYardimciHizmetler.Constants;
 using SayYardimciHizmetler.Models;
@@ -86,57 +87,82 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
             set { drinkTypeID = value; }
         }
 
-        /*private int selectedOrderNumberID;
-        public int SelectedOrderNumberID
+        private bool notifySuccessMessageShow;
+        public bool NotifySuccessMessageShow
         {
-            get { return selectedOrderNumberID; }
-            set { selectedOrderNumberID = value; }
-        }*/
-
-        /*private double price;
-        public double Price
-        {
-            get { return price; }
-            set { price = value; }
-        }*/
-
-        /*private bool loader;
-        public bool Loader
-        {
-            get {
-                loader = false;
-                return loader;
-            }
+            get { return notifySuccessMessageShow; } 
             set {
-                loader = value;
-                base.RaisePropertyChanged("Loader");
+                if (notifySuccessMessageShow == value) return;
+                notifySuccessMessageShow = value;
+                base.RaisePropertyChanged("NotifySuccessMessageShow");
             }
-        }*/
+        }
 
-        /*private bool isDialogOpen;
-        public bool IsDialogOpen
+        private bool notifyFailureMessageShow;
+        public bool NotifyFailureMessageShow
         {
-            get {
-                return isDialogOpen;
-            }
+            get { return notifyFailureMessageShow; }
             set {
-                isDialogOpen = value;
-                base.RaisePropertyChanged("IsDialogOpen");
+                if (notifyFailureMessageShow == value) return;
+                notifyFailureMessageShow = value;
+                RaisePropertyChanged("NotifyFailureMessageShow");
             }
-        }*/
+        }
+
+
+        private bool loadingShow;
+        public bool LoadingShow
+        {
+            get { return loadingShow; }
+            set {
+                if (loadingShow == value) return;
+                loadingShow = value;
+                base.RaisePropertyChanged("LoadingShow");
+            }
+        }
+
+        private int loadingShowOpacity;
+        public int LoadingShowOpacity
+        {
+            get { return loadingShowOpacity; }
+            set {
+                if (loadingShowOpacity == value) return;
+                loadingShowOpacity = value;
+                RaisePropertyChanged("LoadingShowOpacity");
+            }
+        }
+
+
+
         #endregion
 
         #region raisepropertychanged handler
         private void TestPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "AttrSelectedIndex")
+            if(e.PropertyName == "NotifySuccessMessageShow")
             {
-                //AttrSelectedIndex = -1;
+                if(NotifySuccessMessageShow == true)
+                {
+                    ThreadHelper.Wait(3.0, () => {
+                        NotifySuccessMessageShow = false;
+                        LoadingShow = false;
+                        LoadingShowOpacity = 0;
+                    });
+                }
             }
 
-            if (e.PropertyName == "SelectedDrinkType")
+            if (e.PropertyName == "NotifyFailureMessageShow")
             {
-                //selectedDrinkType = ColdDrinksAttr[0];
+                if (NotifyFailureMessageShow == true)
+                {
+                    ThreadHelper.Wait(3.0, () => {
+                        NotifyFailureMessageShow = false;
+                        //SelectedDrinkType = null;
+                        //SelectedOrderNumber = null;
+                        LoadingShow = false;
+                        LoadingShowOpacity = 0;
+                    });
+                }
             }
         }
         #endregion
@@ -144,9 +170,11 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         #region CommandMethods
         private  void OnOrderItemInsert()
         {
-            SelectedDrinkType = null;
+            //SelectedDrinkType = null;
             if (SelectedDrinkType != null && SelectedOrderNumber != null)
             {
+                LoadingShow = true;
+                LoadingShowOpacity = 1;
                 try
                 {
                     DrinkOrderItem item = new DrinkOrderItem
@@ -161,6 +189,7 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                     };
                     SelectedDrinkType = null;
                     SelectedOrderNumber = null;
+                    NotifySuccessMessageShow = true;
                     //selectedDrinkType = ColdDrinksAttr[0];
                     //RaisePropertyChanged("SelectedDrinkType");
                     //AttrSelectedIndex = -1;
@@ -168,11 +197,15 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                     Mediator.NotifyColleagues("OrderItemAdded", item);
                 } catch (Exception ex)
                 {
+                    SelectedDrinkType = null;
+                    SelectedOrderNumber = null;
+                    NotifyFailureMessageShow = true;
                     Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.FailureToken.Value);
                 }
 
             } else
             {
+                NotifyFailureMessageShow = true;
                 SelectedDrinkType = null;
                 SelectedOrderNumber = null;
                 Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.FailureToken);
@@ -190,22 +223,6 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
             {
                 return false;
             }
-
-
-            /*if(SelectedDrinkType == null && ClickFirstSet)
-            {
-                ClickFirstSet = false;
-                return true;
-            } else if (SelectedDrinkType != null)
-            {
-                ClickFirstSet = false;
-                return true;
-            } else if(SelectedDrinkType == null && ClickFirstSet==false)
-            {
-                Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.SuccessToken);
-                return false;
-            }
-            return false;*/  
         }
         #endregion
 

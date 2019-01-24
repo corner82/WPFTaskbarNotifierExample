@@ -118,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ColdDrinks\ColdDrinksMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ColdDrinks\ColdDrinksOrderItemsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,6 +242,9 @@
     <Compile Include="ViewModels\TopMenuButtonsViewModel.cs" />
     <Compile Include="Views\ColdDrinks\ColdDrinksAddOrder.xaml.cs">
       <DependentUpon>ColdDrinksAddOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ColdDrinks\ColdDrinksMainPage.xaml.cs">
+      <DependentUpon>ColdDrinksMainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ColdDrinks\ColdDrinksOrderItemsList.xaml.cs">
       <DependentUpon>ColdDrinksOrderItemsList.xaml</DependentUpon>

@@ -22,6 +22,8 @@ using Core.Common.Views;
 using Core.Common.ServiceLocator;
 using ModernMessageBoxLib;
 using SayYardimciHizmetler.Constants;
+using Core.Utill;
+using SayYardimciHizmetler.Views.ColdDrinks;
 
 namespace SayYardimiciHizmetler
 {
@@ -100,7 +102,7 @@ namespace SayYardimiciHizmetler
 
         }
 
-        public void Wait(double seconds, Action action)
+       /* public static void Wait(double seconds, Action action)
         {
             System.Timers.Timer timer = new System.Timers.Timer();
             timer.Interval = (int)(seconds * 1000.0);
@@ -110,7 +112,7 @@ namespace SayYardimiciHizmetler
                 action();
             };
             timer.Enabled = true;
-        }
+        }*/
 
 
         #region mediator callbacks
@@ -125,7 +127,7 @@ namespace SayYardimiciHizmetler
                     message.Content = MessageConstants.SuccessMessage.Value;
                     testSnackBar.Message = message;
                     testSnackBar.IsActive = true;
-                    Wait(3.0, () => {
+                    ThreadHelper.Wait(3.0, () => {
                         testSnackBar.Dispatcher.Invoke(() =>
                         {
                             testSnackBar.IsActive = false;
@@ -137,7 +139,7 @@ namespace SayYardimiciHizmetler
                     message.Content = MessageConstants.FailureMessage.Value;
                     testSnackBar.Message = message;
                     testSnackBar.IsActive = true;
-                    Wait(3.0, () => {
+                    ThreadHelper.Wait(3.0, () => {
                         testSnackBar.Dispatcher.Invoke(() =>
                         {
                             testSnackBar.IsActive = false;
@@ -197,8 +199,9 @@ namespace SayYardimiciHizmetler
                         case "Beer":
                             {
 
-                                this.BoardFrame.Content = new ColdDrinks();
-                                this.BreadcrumbContent.Content = "Cold Drinks";
+                                //this.BoardFrame.Content = new ColdDrinks();
+                                this.BoardFrame.Content = new ColdDrinksMainPage();
+                                this.BreadcrumbContent.Content = "Soðuk içecekler";
                                 break;
                             }
                         case "Transitions":
@@ -220,10 +223,6 @@ namespace SayYardimiciHizmetler
             {
                 throw new InvalidCastException();
             }
-
-
-            
-            
         }
 
         private void TopMenuUserControl_CloseWindowEventHandlerMethod(object sender, 
@@ -259,8 +258,9 @@ namespace SayYardimiciHizmetler
             }
         }
 
-        #endregion 
+        #endregion
 
+        #region SignalR connections
         private async void ConnectAsync()
         {
             try
@@ -317,6 +317,7 @@ namespace SayYardimiciHizmetler
             dispatcher.Invoke(() => StatusText.Content = "You have been disconnected.");
             dispatcher.Invoke(() => SignInPanel.Visibility = Visibility.Visible*/
         }
+        #endregion
 
         private ObservableCollection<NotifyObject> notifyContent;
         /// <summary>
@@ -341,61 +342,18 @@ namespace SayYardimiciHizmetler
             }
         }
 
-        private void Item_Click(object sender, EventArgs e)
-        {
-            Hyperlink hyperlink = sender as Hyperlink;
-
-            if(hyperlink == null)
-                return;
-
-            NotifyObject notifyObject = hyperlink.Tag as NotifyObject;
-            if(notifyObject != null)
-            {
-                MessageBox.Show("\"" + notifyObject.Message + "\"" + " clicked!");
-            }
-        }
-
-        private void HideButton_Click(object sender, EventArgs e)
-        {
-            this.ForceHidden();
-        }
-
-        private void ButtonPopupLogout_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void ButtonPopupHelp_Click(object sender, RoutedEventArgs e)
-        {
-            this.ForceHidden();
-            //this.taskbarNotifier.Notify();
-            this.Notify();
-        }
-
-        private void ButtonPopupClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.ForceHidden();
-        }
-
         private void ButtonMenuOpen_Click(object sender, RoutedEventArgs e)
         {
             ButtonMenuOpen.Visibility = Visibility.Collapsed;
             ButtonMenuClose.Visibility = Visibility.Visible;
             //var tt = MainScrollViewer.ComputedHorizontalScrollBarVisibility;
             //this.MainScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Visible;
-            
         }
 
         private void ButtonMenuClose_Click(object sender, RoutedEventArgs e)
         {
             ButtonMenuOpen.Visibility = Visibility.Visible;
             ButtonMenuClose.Visibility = Visibility.Collapsed;
-        }
-
-        private void ButtonTopMenuClose_Click(object sender, RoutedEventArgs e)
-        {
-            //this.ForceHidden();
-            this.BoardFrame.Content = new Expanders();
         }
 
 

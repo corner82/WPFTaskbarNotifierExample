@@ -68,7 +68,7 @@
                         <ww:SidemenuUserControl></ww:SidemenuUserControl>
                     </StackPanel>
                 </Grid>
-                <ScrollViewer Name="MainScrollViewer" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0 115 0 0">
+                <ScrollViewer Name="MainScrollViewer"  ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0 115 0 0">
                     <Grid HorizontalAlignment="Left"    >
                         <Grid.ColumnDefinitions  >
                             <ColumnDefinition Width="530" ></ColumnDefinition>

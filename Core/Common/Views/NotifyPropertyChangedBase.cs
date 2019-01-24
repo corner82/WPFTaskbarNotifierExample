@@ -18,9 +18,9 @@ namespace Core.Common.Views
 
         }
 
-        public virtual void OnPropertyChanged(string propertyName)
+        /*public virtual void OnPropertyChanged(string propertyName)
         {
-        }
+        }*/
 
         #endregion
     }

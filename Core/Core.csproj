@@ -61,6 +61,7 @@
     <Compile Include="Factory\IFactoryUserAccess.cs" />
     <Compile Include="Factory\IFactoryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utill\ThreadHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
