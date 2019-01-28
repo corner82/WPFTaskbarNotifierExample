@@ -19,10 +19,20 @@
         <convert:TopMenuButonLayoutConverter x:Key="layoutConverter" />
     </UserControl.Resources>
 
-    <Grid Height="70" VerticalAlignment="Top" Background="#3C8DBC" >
-        <TextBlock FontSize="22" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <!--<Grid Height="70" VerticalAlignment="Top" Background="#3C8DBC" >-->
+    <Grid Height="70" VerticalAlignment="Top" Background="#141212" >
+        <StackPanel Orientation="Horizontal">
+            <Image
+      Source="Resources/Chartridge046_small.jpg"
+      Height="140"
+      Width="196"
+      Stretch="None" />
+            <TextBlock FontSize="22" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
                 SAY-NET
-        </TextBlock>
+            </TextBlock>
+
+        </StackPanel>
+        
         <StackPanel   VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
             <ListView   Name="TopMenuButtonsUserControlListView"    ItemsSource="{Binding TopMenuButtons}"      ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Foreground="WhiteSmoke">
                 <ListView.ItemContainerStyle >

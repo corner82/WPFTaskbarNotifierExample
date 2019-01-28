@@ -13,7 +13,6 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         {
             //LoadColdDrinkViewModels();
         }
-
         #endregion
 
         #region properties
@@ -53,6 +52,7 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
 
         #endregion
 
+        #region data access
         public void LoadColdDrinkViewModels()
         {
             coldDrinkTypes = new ObservableCollection<ColdDrinksTypeViewModel>();
@@ -73,7 +73,6 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                 });
             }
         }
-
         public void LoadColdDrinks()
         {
             //LoadColdDrinkViewModels();
@@ -84,6 +83,7 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
             foreach (var item in dataAccess.GetAllColdDrinks())
                 coldDrinks.Add(item);
         }
+        #endregion
 
     }
 }

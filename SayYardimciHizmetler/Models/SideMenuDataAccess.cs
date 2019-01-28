@@ -28,9 +28,11 @@ namespace SayYardimciHizmetler.Models
             return new List<SideMenu>()
             {
                 new SideMenu { MenuIcon="Home", MenuText = "Ana Sayfa"},
-                new SideMenu { MenuIcon = "AccountCardDetails", MenuText = "Detaylar" },
                 new SideMenu { MenuIcon = "Tea", MenuText = "Sıcak İçecek"},
                 new SideMenu { MenuIcon = "Beer", MenuText = "Soğuk İçecek"},
+                new SideMenu { MenuIcon = "Details", MenuText = "Toplantı Odası"},
+                new SideMenu { MenuIcon = "AccountCardDetails", MenuText = "Detaylar" },
+                new SideMenu { MenuIcon = "AccountEdit", MenuText = "Öneriler" },
                 new SideMenu { MenuIcon = "Transitions", MenuText = "Transition test"}
             };
         }

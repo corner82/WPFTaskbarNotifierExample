@@ -15,6 +15,7 @@ namespace Core.Common.ServiceLocator
 
         private Dictionary<Type, object> ServicesTypes { get; set; } = new Dictionary<Type, object>();
         private Dictionary<Type, object> InitialisedServices { get; set;  } = new Dictionary<Type, object>();
+        private Dictionary<string, object> KeyRegisteredServices { get; set; } = new Dictionary<string, object>();
 
         private ServiceLocatorSingleton()
         {
@@ -35,6 +36,13 @@ namespace Core.Common.ServiceLocator
         {
             if(InitialisedServices.ContainsKey(typeof(T)))
                 return (T)InitialisedServices[typeof(T)];
+            throw new KeyNotFoundException();
+        }
+
+        public T GetServiceWithKey<T>(string key)
+        {
+            if (KeyRegisteredServices.ContainsKey(key))
+                return (T)KeyRegisteredServices[key];
             throw new KeyNotFoundException();
         }
 
@@ -102,6 +110,24 @@ namespace Core.Common.ServiceLocator
                 }
             }
             return false;
+        }
+
+        public bool RegisterServiceObjectWithKey<T>(T service, string key, bool overwriteIfExists = false) 
+        {
+            lock (KeyRegisteredServices)
+            {
+                if (!KeyRegisteredServices.ContainsKey(key))
+                {
+                    KeyRegisteredServices.Add(key, service);
+                    return true;
+                }
+                else if (overwriteIfExists)
+                {
+                    KeyRegisteredServices[key] = service;
+                    return true;
+                }
+                return false;
+            }
         }
 
         private void RegisterServiceTypes()

@@ -1,10 +1,8 @@
 ﻿using Core.Common.Commands;
 using Core.Common.Views;
 using Core.Utill;
-using MaterialDesignThemes.Wpf;
 using SayYardimciHizmetler.Constants;
-using SayYardimciHizmetler.Models;
-using SayYardimciHizmetler.Models.Drinks;
+using SayYardimciHizmetler.Models.Complaints;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,84 +10,57 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
-namespace SayYardimciHizmetler.ViewModels.ColdDrinks
+namespace SayYardimciHizmetler.ViewModels.Complaints
 {
-    public class ColdDrinksTypeViewModel : BaseViewModel
+    public class ComplaintsTypeViewModel : BaseViewModel
     {
         #region constructor
-        public ColdDrinksTypeViewModel()
+        public ComplaintsTypeViewModel()
         {
-            InsertOrderItemCommand = new BaseCommand(OnOrderItemInsert, CanOrderItemInsert);
+            InsertComplaintCommand = new BaseCommand(OnComplaintInsert, CanComplaintInsert);
             base.PropertyChanged += ViewPropertyChanged;
         }
         #endregion
 
         #region commands
-        public BaseCommand InsertOrderItemCommand { get; set; }
+        public BaseCommand InsertComplaintCommand { get; set; }
         #endregion
 
         #region properties
-        private ObservableCollection<DrinkAttr> coldDrinksAttr;
-        public ObservableCollection<DrinkAttr> ColdDrinksAttr
+        private string complaintContent;
+        public string ComplaintContent
         {
-            get { return coldDrinksAttr; }
+            get { return complaintContent; }
             set {
-                coldDrinksAttr = value;
-                base.RaisePropertyChanged("ColdDrinksAttr");
-            }
-        }
-
-        public ObservableCollection<DrinkOrderNumber> ColdDrinksOrders { get; set; }
-
-        private DrinkAttr selectedDrinkType;
-        public DrinkAttr SelectedDrinkType
-        {
-            get { return selectedDrinkType; }
-            set
-            {
-                if (selectedDrinkType == value) return;
-                selectedDrinkType = value;
-                base.RaisePropertyChanged("SelectedDrinkType");
-                InsertOrderItemCommand.RaiseCanExecuteChanged();
-                //Mediator.NotifyColleagues("SelectedDrinkTypeChanged", new DrinkOrderNumber { Id = 1, Name = "Test Order Number" });
-            }
-        }
-
-        private DrinkOrderNumber selectedOrderNumber;
-        public DrinkOrderNumber SelectedOrderNumber
-        {
-            get { return selectedOrderNumber; }
-            set {
-                if (selectedOrderNumber == value) return;
-                selectedOrderNumber = value;
-                base.RaisePropertyChanged("SelectedOrderNumber");
-                InsertOrderItemCommand.RaiseCanExecuteChanged();
-                //Mediator.NotifyColleagues("ChangeView", true);
+                if (complaintContent == value) return;
+                complaintContent = value;
+                InsertComplaintCommand.RaiseCanExecuteChanged();
+                //RaisePropertyChanged("ComplaintContent");
             }
         }
 
         private string name;
-        public string Name
+        public string  Name
         {
             get { return name; }
             set { name = value; }
         }
 
-        private int drinkTypeID;
-        public int DrinkTypeID
+
+        private int complaintTypeID;
+        public int ComplaintTypeID
         {
-            get { return drinkTypeID; }
-            set { drinkTypeID = value; }
+            get { return complaintTypeID; }
+            set { complaintTypeID = value; }
         }
 
         private bool notifySuccessMessageShow;
         public bool NotifySuccessMessageShow
         {
-            get { return notifySuccessMessageShow; } 
-            set {
+            get { return notifySuccessMessageShow; }
+            set
+            {
                 if (notifySuccessMessageShow == value) return;
                 notifySuccessMessageShow = value;
                 base.RaisePropertyChanged("NotifySuccessMessageShow");
@@ -100,10 +71,35 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         public bool NotifyFailureMessageShow
         {
             get { return notifyFailureMessageShow; }
-            set {
+            set
+            {
                 if (notifyFailureMessageShow == value) return;
                 notifyFailureMessageShow = value;
-                RaisePropertyChanged("NotifyFailureMessageShow");
+                base.RaisePropertyChanged("NotifyFailureMessageShow");
+            }
+        }
+
+        private bool notifyMinCharacterMessageShow;
+        public bool NotifyMinCharacterMessageShow
+        {
+            get { return notifyMinCharacterMessageShow; }
+            set
+            {
+                if (notifyMinCharacterMessageShow == value) return;
+                notifyMinCharacterMessageShow = value;
+                RaisePropertyChanged("NotifyMinCharacterMessageShow");
+            }
+        }
+
+        private bool notifyMaxCharacterMessageShow;
+        public bool NotifyMaxCharacterMessageShow
+        {
+            get { return notifyMaxCharacterMessageShow; }
+            set
+            {
+                if (notifyMaxCharacterMessageShow == value) return;
+                notifyMaxCharacterMessageShow = value;
+                RaisePropertyChanged("NotifyMaxCharacterMessageShow");
             }
         }
 
@@ -112,7 +108,8 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         public bool LoadingShow
         {
             get { return loadingShow; }
-            set {
+            set
+            {
                 if (loadingShow == value) return;
                 loadingShow = value;
                 base.RaisePropertyChanged("LoadingShow");
@@ -123,23 +120,21 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         public int LoadingShowOpacity
         {
             get { return loadingShowOpacity; }
-            set {
+            set
+            {
                 if (loadingShowOpacity == value) return;
                 loadingShowOpacity = value;
                 RaisePropertyChanged("LoadingShowOpacity");
             }
         }
-
-
-
         #endregion
 
         #region raisepropertychanged handler
         private void ViewPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "NotifySuccessMessageShow")
+            if (e.PropertyName == "NotifySuccessMessageShow")
             {
-                if(NotifySuccessMessageShow == true)
+                if (NotifySuccessMessageShow == true)
                 {
                     ThreadHelper.Wait(2.0, () => {
                         NotifySuccessMessageShow = false;
@@ -162,67 +157,95 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                     });
                 }
             }
+
+            if (e.PropertyName == "NotifyMinCharacterMessageShow")
+            {
+                if (NotifyMinCharacterMessageShow == true)
+                {
+                    ThreadHelper.Wait(5.0, () => {
+                        NotifyMinCharacterMessageShow = false;
+                        LoadingShow = false;
+                        LoadingShowOpacity = 0;
+                    });
+                }
+            }
+
+            if (e.PropertyName == "NotifyMaxCharacterMessageShow")
+            {
+                if (NotifyMaxCharacterMessageShow == true)
+                {
+                    ThreadHelper.Wait(5.0, () => {
+                        NotifyMaxCharacterMessageShow = false;
+                        LoadingShow = false;
+                        LoadingShowOpacity = 0;
+                    });
+                }
+            }
         }
         #endregion
 
         #region CommandMethods
-        private  void OnOrderItemInsert()
+        private void OnComplaintInsert()
         {
             //SelectedDrinkType = null;
-            if (SelectedDrinkType != null && SelectedOrderNumber != null)
+            if (complaintContent != null )
             {
                 LoadingShow = true;
                 LoadingShowOpacity = 1;
                 try
                 {
-                    DrinkOrderItem item = new DrinkOrderItem
+                    ComplaintModel comp = new ComplaintModel
                     {
-                        DrinkAttrName = selectedDrinkType.PropertyName,
-                        DrinkAttrID = selectedDrinkType.Id,
-                        DrinkTypePrice = selectedDrinkType.Price,
-                        DrinkOrderNumberName = selectedOrderNumber.Name,
-                        DrinkOrderNumberID = selectedOrderNumber.Id,
-                        DrinkTypeName = name,
-                        DrinkTypeID = drinkTypeID,
+                        Active = 1,
+                        ComplaintContent = ComplaintContent,
+                        ComplaintTypeID = ComplaintTypeID,
+
                     };
-                    SelectedDrinkType = null;
-                    SelectedOrderNumber = null;
+                    
+                    
                     NotifySuccessMessageShow = true;
-                    //selectedDrinkType = ColdDrinksAttr[0];
-                    //RaisePropertyChanged("SelectedDrinkType");
-                    //AttrSelectedIndex = -1;
                     //System.Windows.Threading.Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => { RaisePropertyChanged("SelectedDrinkType"); }), null);
-                    Mediator.NotifyColleagues("OrderItemAddedColdDrinks", item);
-                } catch (Exception ex)
+                    Mediator.NotifyColleagues("OrderItemAddedComplaints", comp);
+                }
+                catch (Exception ex)
                 {
-                    SelectedDrinkType = null;
-                    SelectedOrderNumber = null;
                     NotifyFailureMessageShow = true;
                     Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.FailureToken.Value);
                 }
 
-            } else
+            }
+            else
             {
                 NotifyFailureMessageShow = true;
-                SelectedDrinkType = null;
-                SelectedOrderNumber = null;
                 Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.FailureToken);
             }
 
 
 
-            
+
         }
-        private bool CanOrderItemInsert()
+        private bool CanComplaintInsert()
         {
-            if(selectedDrinkType != null && SelectedOrderNumber != null) {
+            if (ComplaintContent != null )
+            {
+                if(ComplaintContent.Length < 20)
+                {
+                    NotifyMinCharacterMessageShow = true;
+                    return false;
+                } else if(ComplaintContent.Length > 255)
+                {
+                    NotifyMaxCharacterMessageShow = true;
+                    return false;
+                }
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
         }
         #endregion
+
 
     }
 }

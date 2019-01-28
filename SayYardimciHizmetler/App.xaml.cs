@@ -7,6 +7,8 @@ using System.Windows.Threading;
 using Core.Common.ServiceLocator;
 using SayYardimciHizmetler.Models;
 using Core.Common.User;
+using SayYardimciHizmetler.Models.Drinks;
+using System.Collections.ObjectModel;
 
 namespace SayYardimiciHizmetler
 {
@@ -29,6 +31,11 @@ namespace SayYardimiciHizmetler
                                                                                 SicilNo = 9732,
                                                                                 Surname = "Yetkili"
                                                                                 });
+
+            //set order item list globally
+            ServiceLocatorSingleton.Instance.RegisterServiceObjectWithKey<ObservableCollection<DrinkOrderItem>>(
+                                                                        new ObservableCollection<DrinkOrderItem>(),
+                                                                        "OrderItemsListSource");
 
             //ServiceLocatorSingleton.Instance.RegisterServiceObject<ISideMenuDataAccess>(new SideMenuDataAccess());
             //ServiceLocatorSingleton.Instance.RegisterServiceObject<ITopMenuButtonsDataAccess>(new TopMenuButtonsDataAccess());

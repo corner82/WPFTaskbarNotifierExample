@@ -94,10 +94,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ColdDrinks.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DashBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +119,42 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ColdDrinks\ColdDrinksOrderItemsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Complaints\ComplaintsAddComplaints.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Complaints\ComplaintsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Complaints\ComplaintsMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HotDrinks\HotDrinksAddOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HotDrinks\HotDrinksMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HotDrinks\HotDrinksOrderItemsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MeetingRoomDrinks\MeetingRoomDrinksAddOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MeetingRoomDrinks\MeetingRoomDrinksMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MeetingRoomDrinks\MeetingRoomDrinksOrderItemsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,9 +210,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ColdDrinks.xaml.cs">
-      <DependentUpon>ColdDrinks.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Constants\MessageConstants.cs" />
     <Compile Include="Constants\OrderConstants.cs" />
     <Compile Include="Converters\TopMenuButonLayoutConverter.cs" />
@@ -193,7 +222,14 @@
     </Compile>
     <Compile Include="Factories\UserAccess\OnlyTestUsersAccessFactory.cs" />
     <Compile Include="Factories\ViewModels\ColdDrinksOrderItemDetailViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\ColdDrinksOrderItemsListViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\ColdDrinksViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\ComplaintsListViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\ComplaintsViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\HotDrinksOrderItemsListViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\HotDrinksViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\MeetingRoomDrinksOrderItemsListViewModelFactory.cs" />
+    <Compile Include="Factories\ViewModels\MeetingRoomDrinksViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\SideMenuViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\TasbarNotifierViewModelFactory.cs" />
     <Compile Include="Factories\ViewModels\TopMenuButtonsViewModelFactory.cs" />
@@ -201,15 +237,24 @@
       <DependentUpon>HotDrinks.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelsDesignTime\DesignTimePeopleDataAccess.cs" />
+    <Compile Include="Models\Complaints\ComplaintDataAccess.cs" />
+    <Compile Include="Models\Complaints\ComplaintModel.cs" />
+    <Compile Include="Models\Complaints\ComplaintTypeModel.cs" />
+    <Compile Include="Models\Complaints\ComplaintTypesDataAccess.cs" />
+    <Compile Include="Models\Complaints\IComplaintDataAccess.cs" />
+    <Compile Include="Models\Complaints\ICompliantTypesDataAccess.cs" />
     <Compile Include="Models\Drinks\DrinkAttr.cs" />
     <Compile Include="Models\Drinks\DrinkOrder.cs" />
+    <Compile Include="Models\Drinks\DrinkOrderDataAccess.cs" />
     <Compile Include="Models\Drinks\DrinkOrderItem.cs" />
     <Compile Include="Models\Drinks\DrinkOrderNumber.cs" />
     <Compile Include="Models\Drinks\DrinkType.cs" />
     <Compile Include="Models\Drinks\DrinkTypesDataAccess.cs" />
     <Compile Include="Models\Drinks\IDrinkAttr.cs" />
     <Compile Include="Models\Drinks\IDrinkOrder.cs" />
+    <Compile Include="Models\Drinks\IDrinkOrderDataAccess.cs" />
     <Compile Include="Models\Drinks\IDrinkOrderItem.cs" />
+    <Compile Include="Models\Drinks\IDrinkOrderItemListItemsSource.cs" />
     <Compile Include="Models\Drinks\IDrinkOrderNumber.cs" />
     <Compile Include="Models\Drinks\IDrinkType.cs" />
     <Compile Include="Models\Drinks\IDrinkTypesDataAccess.cs" />
@@ -237,6 +282,15 @@
     <Compile Include="ViewModels\ColdDrinks\ColdDrinksTypeViewModel.cs" />
     <Compile Include="ViewModels\ColdDrinks\ColdDrinksViewModel.cs" />
     <Compile Include="ViewModels\ColdDrinks\PropertyChanged.cs" />
+    <Compile Include="ViewModels\Complaints\ComplaintsTypeViewModel.cs" />
+    <Compile Include="ViewModels\Complaints\ComplaintsViewModel.cs" />
+    <Compile Include="ViewModels\Complaints\CompliantsListViewModel.cs" />
+    <Compile Include="ViewModels\HotDrinks\HotDrinksOrderItemsListViewModel.cs" />
+    <Compile Include="ViewModels\HotDrinks\HotDrinksTypeViewModel.cs" />
+    <Compile Include="ViewModels\HotDrinks\HotDrinksViewModel.cs" />
+    <Compile Include="ViewModels\MeetingRoomDrinks\MeetingRoomDrinksOrderItemsListViewModel.cs" />
+    <Compile Include="ViewModels\MeetingRoomDrinks\MeetingRoomDrinksTypeViewModel.cs" />
+    <Compile Include="ViewModels\MeetingRoomDrinks\MeetingRoomDrinksViewModel.cs" />
     <Compile Include="ViewModels\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\TaskbarNotifierViewModel.cs" />
     <Compile Include="ViewModels\TopMenuButtonsViewModel.cs" />
@@ -248,6 +302,33 @@
     </Compile>
     <Compile Include="Views\ColdDrinks\ColdDrinksOrderItemsList.xaml.cs">
       <DependentUpon>ColdDrinksOrderItemsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Complaints\ComplaintsAddComplaints.xaml.cs">
+      <DependentUpon>ComplaintsAddComplaints.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Complaints\ComplaintsList.xaml.cs">
+      <DependentUpon>ComplaintsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Complaints\ComplaintsMainPage.xaml.cs">
+      <DependentUpon>ComplaintsMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HotDrinks\HotDrinksAddOrder.xaml.cs">
+      <DependentUpon>HotDrinksAddOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HotDrinks\HotDrinksMainPage.xaml.cs">
+      <DependentUpon>HotDrinksMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HotDrinks\HotDrinksOrderItemsList.xaml.cs">
+      <DependentUpon>HotDrinksOrderItemsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MeetingRoomDrinks\MeetingRoomDrinksAddOrder.xaml.cs">
+      <DependentUpon>MeetingRoomDrinksAddOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MeetingRoomDrinks\MeetingRoomDrinksMainPage.xaml.cs">
+      <DependentUpon>MeetingRoomDrinksMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MeetingRoomDrinks\MeetingRoomDrinksOrderItemsList.xaml.cs">
+      <DependentUpon>MeetingRoomDrinksOrderItemsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SideMenuUserControl.xaml.cs">
       <DependentUpon>SideMenuUserControl.xaml</DependentUpon>

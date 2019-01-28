@@ -17,8 +17,10 @@
     <StackPanel>
         <!--<Button Name="TT"  Content="test" Command="{Binding TestCommand, diag:PresentationTraceSources.TraceLevel=High}" ></Button>
         <Button Name="TD"  Content="delete" Command="{Binding DeleteCommand, diag:PresentationTraceSources.TraceLevel=High}" ></Button>-->
-        <TextBlock  us:UserAccessLoader.UserAccessLevel="{x:Type facaccess:OnlyTestUsersAccessFactory}"  Foreground="White" Text="{Binding User.Name}"></TextBlock>
-        <ListView  Name="UserControlListView"    ItemsSource="{Binding MenuItems}"      ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="WhiteSmoke">
+        <TextBlock  us:UserAccessLoader.UserAccessLevel="{x:Type facaccess:OnlyTestUsersAccessFactory}"  
+                    Foreground="White" Text="{Binding User.Name}"></TextBlock>
+        <ListView  Name="UserControlListView"    ItemsSource="{Binding MenuItems}"      
+                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="WhiteSmoke">
             <ListView.ItemContainerStyle >
                 <Style TargetType="ListViewItem" x:Name="HomeOpener">
                     <!--<Setter Property="ListViewItem.Name" Value="{Binding MenuIcon}"/>-->
@@ -29,7 +31,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="{Binding MenuIcon}" Height="35" Margin="10"   VerticalAlignment="Center"></materialDesign:PackIcon>
-                        <TextBlock  VerticalAlignment="Center" Margin="10 10" Text="{Binding MenuText}">Ana Sayfa</TextBlock>
+                        <TextBlock  VerticalAlignment="Center" Margin="10 10" Text="{Binding MenuText}"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

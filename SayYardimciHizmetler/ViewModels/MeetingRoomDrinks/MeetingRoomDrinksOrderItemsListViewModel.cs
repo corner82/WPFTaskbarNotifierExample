@@ -1,46 +1,41 @@
-﻿using AmRoMessageDialog;
-using Core.Common.Commands;
+﻿using Core.Common.Commands;
 using Core.Common.ServiceLocator;
 using Core.Common.Views;
-using Core.Utill;
-using ModernMessageBoxLib;
 using SayYardimciHizmetler.Constants;
 using SayYardimciHizmetler.Models.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
-using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Forms;
 
-namespace SayYardimciHizmetler.ViewModels.ColdDrinks
+namespace SayYardimciHizmetler.ViewModels.MeetingRoomDrinks
 {
-    partial class ColdDrinksOrderItemsListViewModel : BaseViewModel
+    public class MeetingRoomDrinksOrderItemsListViewModel : BaseViewModel
     {
-        public ColdDrinksOrderItemsListViewModel()
+        #region constructor
+        public MeetingRoomDrinksOrderItemsListViewModel()
         {
-            //OrderItemsList = new ObservableCollection<DrinkOrderItem>();
-            //LoadTestData();
-            //orderItemsList = new ObservableCollection<DrinkOrderItem>();
-            Mediator.Register("OrderItemAddedColdDrinks", OnOrderItemAddedColdDrinks);
+            Mediator.Register("OrderItemAddedMeetingRoomDrinks", OnOrderItemAddedMeetingRoom);
             base.PropertyChanged += ViewPropertyChanged;
         }
+        #endregion
 
         #region properties
-        private ObservableCollection<DrinkOrderItem>  orderItemsList;
+        private ObservableCollection<DrinkOrderItem> orderItemsList;
         public ObservableCollection<DrinkOrderItem> OrderItemsList
         {
-            get {
+            get
+            {
                 if (orderItemsList == null)
-                    orderItemsList = ServiceLocatorSingleton.Instance.GetServiceWithKey<ObservableCollection<DrinkOrderItem>>("OrderItemsListSource");
-                    //orderItemsList = new ObservableCollection<DrinkOrderItem>();
+                    //orderItemsList = ServiceLocatorSingleton.Instance.GetServiceWithKey<ObservableCollection<DrinkOrderItem>>("OrderItemsListSource");
+                orderItemsList = new ObservableCollection<DrinkOrderItem>();
                 return orderItemsList;
             }
-            set {
+            set
+            {
                 if (orderItemsList == value) return;
                 orderItemsList = value;
                 base.RaisePropertyChanged("OrderItemsList");
@@ -51,17 +46,17 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         #region raisepropertychanged handler
         private void ViewPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "OrderItemsList")
+            /*if (e.PropertyName == "OrderItemsList")
             {
                 ServiceLocatorSingleton.Instance.RegisterServiceObjectWithKey<ObservableCollection<DrinkOrderItem>>(
                                                                        OrderItemsList,
                                                                        "OrderItemsListSource", true);
-            }
+            }*/
         }
         #endregion
 
         #region mediator callbacks
-        public void OnOrderItemAddedColdDrinks(object arg)
+        public void OnOrderItemAddedMeetingRoom(object arg)
         {
             DrinkOrderItem orderItem = (DrinkOrderItem)arg;
             bool successControler = false;
@@ -73,23 +68,27 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                     successControler = true;
                     base.RaisePropertyChanged("OrderItemsList");
                     //throw new Exception("test exception");
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     successControler = false;
                 }
-                
-            } else
+
+            }
+            else
             {
                 successControler = false;
             }
 
-            if(successControler) {
+            if (successControler)
+            {
                 Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.SuccessToken);
-            } else
+            }
+            else
             {
                 Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.FailureToken);
             }
-            
+
         }
         #endregion
 
@@ -106,10 +105,9 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                 DrinkAttrName = "1000 ml",
                 DrinkOrderNumberName = "5"
             });*/
-            
+
         }
         #endregion
-
 
 
     }

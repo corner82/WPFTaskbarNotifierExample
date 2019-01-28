@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SayYardimciHizmetler.Views.ColdDrinks.ColdDrinksAddOrder"
+﻿<UserControl x:Class="SayYardimciHizmetler.Views.HotDrinks.HotDrinksAddOrder"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,8 +7,8 @@
              xmlns:vm="clr-namespace:Core.Common.Views;assembly=Core"
              xmlns:fac="clr-namespace:SayYardimciHizmetler.Factories.ViewModels"
              xmlns:vmodels="clr-namespace:SayYardimciHizmetler.ViewModels.ColdDrinks"
-             
-             xmlns:local="clr-namespace:SayYardimciHizmetler.Views.ColdDrinks"
+             xmlns:vhotmodels="clr-namespace:SayYardimciHizmetler.ViewModels.HotDrinks"
+             xmlns:local="clr-namespace:SayYardimciHizmetler.Views.HotDrinks"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -23,11 +23,53 @@
                 <!-- throw in some extra colour for our floating action button -->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Grid" x:Key="testGridtest">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=AnimationState}" Value="New">
+                        <DataTrigger.EnterActions>
+                            <StopStoryboard BeginStoryboardName="EndAnimation" />
+                            <BeginStoryboard Name="NewAnimation">
+                                
+                                <Storyboard>
+                                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" >
+                                        <EasingDoubleKeyFrame  KeyTime="0" Value="50"></EasingDoubleKeyFrame>
+                                        <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="200"></EasingDoubleKeyFrame>
+                                    </DoubleAnimationUsingKeyFrames>-->
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:4" />
+                                    <!--<ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,30,0,0" To="0,0,0,0" Duration="0:0:1" />
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1" />-->
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+
+                        </DataTrigger.ExitActions>
+
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Path=AnimationState}" Value="End">
+                        <DataTrigger.EnterActions>
+                            <StopStoryboard BeginStoryboardName="NewAnimation" />
+                            <BeginStoryboard Name="EndAnimation">
+                                <Storyboard >
+                                    <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Margin"  >
+                                        <EasingDoubleKeyFrame  KeyTime="0" Value="200"></EasingDoubleKeyFrame>
+                                        <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="50"></EasingDoubleKeyFrame>
+                                    </DoubleAnimationUsingKeyFrames>-->
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:4" />
+                                    <!--<ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-20,0,0" Duration="0:0:1"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:1" />-->
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
 
-    <Grid HorizontalAlignment="Center" Width="500" >
+    <Grid HorizontalAlignment="Center" Width="500" Name="testGridtest">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -37,20 +79,20 @@
             <materialDesign:ColorZone Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="4">
                 <StackPanel Margin="16" Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Account" Height="32" Width="32" />
-                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Margin="16 0 0 0">Soğuk İçecek Sipariş Ekranı</TextBlock>
+                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Margin="16 0 0 0">Sıcak İçecek Sipariş Ekranı</TextBlock>
                 </StackPanel>
             </materialDesign:ColorZone>
         </materialDesign:TransitioningContent>
 
-        <ItemsControl Grid.Row="1" x:Name="TestItemsControl" ItemsSource="{Binding ColdDrinkTypes}"  
-                      vm:ViewModelLoader.FactoryType="{x:Type fac:ColdDrinksViewModelFactory}" >
+        <ItemsControl Grid.Row="1"  ItemsSource="{Binding HotDrinkTypes}"  
+                      vm:ViewModelLoader.FactoryType="{x:Type fac:HotDrinksViewModelFactory}" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Width="500" HorizontalAlignment="Stretch"></WrapPanel>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type vmodels:ColdDrinksTypeViewModel}">
+                <DataTemplate DataType="{x:Type vhotmodels:HotDrinksTypeViewModel}">
                     <materialDesign:TransitioningContent OpeningEffectsOffset="{materialDesign:IndexedItemOffsetMultiplier 0:0:0.05}">
                         <materialDesign:TransitioningContent.OpeningEffects>
                             <materialDesign:TransitionEffect Kind="None" />
@@ -91,18 +133,18 @@
                                             <RowDefinition  />
                                             <RowDefinition  />
                                             <RowDefinition Height="*" />
-                                            
+
                                         </Grid.RowDefinitions>
                                         <ComboBox Grid.Row="0" materialDesign:HintAssist.Hint="İçecek seçiniz" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                               IsSynchronizedWithCurrentItem="True"
-                                              ItemsSource="{Binding ColdDrinksAttr}"   
+                                              ItemsSource="{Binding HotDrinksAttr}"   
                                               SelectedItem="{Binding SelectedDrinkType, Mode=TwoWay}" 
                                               SelectedValue="{Binding SelectedDrinkType, Mode=TwoWay}"
                                               DisplayMemberPath="PropertyName"
                                               >
                                         </ComboBox>
                                         <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Adet seçiniz" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                              ItemsSource="{Binding ColdDrinksOrders}"   
+                                              ItemsSource="{Binding HotDrinksOrders}"   
                                               SelectedItem="{Binding SelectedOrderNumber, Mode=TwoWay}" 
                                               SelectedValue="{Binding SelectedOrderNumber, Mode=TwoWay}"
                                               SelectedValuePath="Name"
@@ -125,6 +167,7 @@
                                             Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                             
                                             ToolTip="Resource name: MaterialDesignRaisedAccentButton">
+                                                
 
                                             </Button>
                                         </StackPanel>
@@ -149,7 +192,7 @@
                     Margin="16">
                 <materialDesign:PackIcon Kind="StepBackward" />
             </Button>
-            <Button Name="tst" Click="btn_Click" Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"                     
+            <Button   Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"                     
                     Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" 
                     VerticalAlignment="Top"
                     Margin="16">

@@ -1,5 +1,4 @@
-﻿using SayYardimciHizmetler.ViewModels.ColdDrinks;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SayYardimciHizmetler.Views.ColdDrinks
+namespace SayYardimciHizmetler.Views.HotDrinks
 {
     /// <summary>
-    /// Interaction logic for ColdDrinksOrderItemsList.xaml
+    /// Interaction logic for HotDrinksMainPage.xaml
     /// </summary>
-    public partial class ColdDrinksOrderItemsList : UserControl
+    public partial class HotDrinksMainPage : Page
     {
-        public ColdDrinksOrderItemsList()
+        public HotDrinksMainPage()
         {
             InitializeComponent();
         }

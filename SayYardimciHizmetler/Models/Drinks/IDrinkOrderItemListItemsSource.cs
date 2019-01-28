@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace SayYardimciHizmetler.Models.Drinks
 {
-    public interface IDrinkTypesDataAccess
+    interface IDrinkOrderItemListItemsSource
     {
-        List<DrinkType> GetAllColdDrinks();
-        List<DrinkType> GetAllHotDrinks();
-        List<DrinkType> GetAllMeetingRoomDrinks();
     }
 }

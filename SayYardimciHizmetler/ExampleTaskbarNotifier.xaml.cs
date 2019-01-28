@@ -24,6 +24,9 @@ using ModernMessageBoxLib;
 using SayYardimciHizmetler.Constants;
 using Core.Utill;
 using SayYardimciHizmetler.Views.ColdDrinks;
+using SayYardimciHizmetler.Views.HotDrinks;
+using SayYardimciHizmetler.Views.MeetingRoomDrinks;
+using SayYardimciHizmetler.Views.Complaints;
 
 namespace SayYardimiciHizmetler
 {
@@ -58,7 +61,7 @@ namespace SayYardimiciHizmetler
     /// </summary>
     public partial class ExampleTaskbarNotifier : TaskbarNotifier
     {
-
+        #region properties
         /// <summary>
         /// This name is simply added to sent messages to identify the user; this 
         /// sample does not include authentication.
@@ -67,7 +70,9 @@ namespace SayYardimiciHizmetler
         public IHubProxy HubProxy { get; set; }
         const string ServerURI = "http://localhost:8080/signalr";
         public HubConnection Connection { get; set; }
+        #endregion
 
+        #region constructor
         public ExampleTaskbarNotifier()
         {
             InitializeComponent();
@@ -101,19 +106,7 @@ namespace SayYardimiciHizmetler
             #endregion
 
         }
-
-       /* public static void Wait(double seconds, Action action)
-        {
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = (int)(seconds * 1000.0);
-            timer.Elapsed += (s, o) => {
-                timer.Enabled = false;
-                timer.Dispose();
-                action();
-            };
-            timer.Enabled = true;
-        }*/
-
+        #endregion
 
         #region mediator callbacks
         public void OnSuccesMessenger(object show)
@@ -192,8 +185,9 @@ namespace SayYardimiciHizmetler
                             }
                         case "Tea":
                             {
-                                this.BoardFrame.Content = new HotDrinks();
-                                this.BreadcrumbContent.Content = "Hot Drinks";
+                                //this.BoardFrame.Content = new HotDrinks();
+                                this.BoardFrame.Content = new HotDrinksMainPage();
+                                this.BreadcrumbContent.Content = "Sýcak Ýçecekler";
                                 break;
                             }
                         case "Beer":
@@ -202,6 +196,22 @@ namespace SayYardimiciHizmetler
                                 //this.BoardFrame.Content = new ColdDrinks();
                                 this.BoardFrame.Content = new ColdDrinksMainPage();
                                 this.BreadcrumbContent.Content = "Soðuk içecekler";
+                                break;
+                            }
+                        case "Details":
+                            {
+
+                                //this.BoardFrame.Content = new ColdDrinks();
+                                this.BoardFrame.Content = new MeetingRoomDrinksMainPage();
+                                this.BreadcrumbContent.Content = "Toplantý Salonu Ýçecekleri";
+                                break;
+                            }
+                        case "AccountEdit":
+                            {
+
+                                //this.BoardFrame.Content = new ColdDrinks();
+                                this.BoardFrame.Content = new ComplaintsMainPage();
+                                this.BreadcrumbContent.Content = "Önerileriniz";
                                 break;
                             }
                         case "Transitions":

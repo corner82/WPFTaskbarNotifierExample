@@ -1,9 +1,7 @@
 ﻿using Core.Common.Commands;
 using Core.Common.Views;
 using Core.Utill;
-using MaterialDesignThemes.Wpf;
 using SayYardimciHizmetler.Constants;
-using SayYardimciHizmetler.Models;
 using SayYardimciHizmetler.Models.Drinks;
 using System;
 using System.Collections.Generic;
@@ -12,15 +10,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
-namespace SayYardimciHizmetler.ViewModels.ColdDrinks
+namespace SayYardimciHizmetler.ViewModels.MeetingRoomDrinks
 {
-    public class ColdDrinksTypeViewModel : BaseViewModel
+    public class MeetingRoomDrinksTypeViewModel : BaseViewModel
     {
         #region constructor
-        public ColdDrinksTypeViewModel()
+        public MeetingRoomDrinksTypeViewModel()
         {
             InsertOrderItemCommand = new BaseCommand(OnOrderItemInsert, CanOrderItemInsert);
             base.PropertyChanged += ViewPropertyChanged;
@@ -32,17 +28,18 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         #endregion
 
         #region properties
-        private ObservableCollection<DrinkAttr> coldDrinksAttr;
-        public ObservableCollection<DrinkAttr> ColdDrinksAttr
+        private ObservableCollection<DrinkAttr> meetingRoomDrinksAttr;
+        public ObservableCollection<DrinkAttr> MeetingRoomDrinksAttr
         {
-            get { return coldDrinksAttr; }
-            set {
-                coldDrinksAttr = value;
-                base.RaisePropertyChanged("ColdDrinksAttr");
+            get { return meetingRoomDrinksAttr; }
+            set
+            {
+                meetingRoomDrinksAttr = value;
+                base.RaisePropertyChanged("MeetingRoomDrinksAttr");
             }
         }
 
-        public ObservableCollection<DrinkOrderNumber> ColdDrinksOrders { get; set; }
+        public ObservableCollection<DrinkOrderNumber> MeetingRoomDrinksOrders { get; set; }
 
         private DrinkAttr selectedDrinkType;
         public DrinkAttr SelectedDrinkType
@@ -54,7 +51,6 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                 selectedDrinkType = value;
                 base.RaisePropertyChanged("SelectedDrinkType");
                 InsertOrderItemCommand.RaiseCanExecuteChanged();
-                //Mediator.NotifyColleagues("SelectedDrinkTypeChanged", new DrinkOrderNumber { Id = 1, Name = "Test Order Number" });
             }
         }
 
@@ -62,12 +58,12 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         public DrinkOrderNumber SelectedOrderNumber
         {
             get { return selectedOrderNumber; }
-            set {
+            set
+            {
                 if (selectedOrderNumber == value) return;
                 selectedOrderNumber = value;
                 base.RaisePropertyChanged("SelectedOrderNumber");
                 InsertOrderItemCommand.RaiseCanExecuteChanged();
-                //Mediator.NotifyColleagues("ChangeView", true);
             }
         }
 
@@ -88,8 +84,9 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         private bool notifySuccessMessageShow;
         public bool NotifySuccessMessageShow
         {
-            get { return notifySuccessMessageShow; } 
-            set {
+            get { return notifySuccessMessageShow; }
+            set
+            {
                 if (notifySuccessMessageShow == value) return;
                 notifySuccessMessageShow = value;
                 base.RaisePropertyChanged("NotifySuccessMessageShow");
@@ -100,7 +97,8 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         public bool NotifyFailureMessageShow
         {
             get { return notifyFailureMessageShow; }
-            set {
+            set
+            {
                 if (notifyFailureMessageShow == value) return;
                 notifyFailureMessageShow = value;
                 RaisePropertyChanged("NotifyFailureMessageShow");
@@ -112,7 +110,8 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         public bool LoadingShow
         {
             get { return loadingShow; }
-            set {
+            set
+            {
                 if (loadingShow == value) return;
                 loadingShow = value;
                 base.RaisePropertyChanged("LoadingShow");
@@ -123,23 +122,21 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         public int LoadingShowOpacity
         {
             get { return loadingShowOpacity; }
-            set {
+            set
+            {
                 if (loadingShowOpacity == value) return;
                 loadingShowOpacity = value;
                 RaisePropertyChanged("LoadingShowOpacity");
             }
         }
-
-
-
         #endregion
 
         #region raisepropertychanged handler
         private void ViewPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "NotifySuccessMessageShow")
+            if (e.PropertyName == "NotifySuccessMessageShow")
             {
-                if(NotifySuccessMessageShow == true)
+                if (NotifySuccessMessageShow == true)
                 {
                     ThreadHelper.Wait(2.0, () => {
                         NotifySuccessMessageShow = false;
@@ -166,7 +163,7 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
         #endregion
 
         #region CommandMethods
-        private  void OnOrderItemInsert()
+        private void OnOrderItemInsert()
         {
             //SelectedDrinkType = null;
             if (SelectedDrinkType != null && SelectedOrderNumber != null)
@@ -192,32 +189,31 @@ namespace SayYardimciHizmetler.ViewModels.ColdDrinks
                     //RaisePropertyChanged("SelectedDrinkType");
                     //AttrSelectedIndex = -1;
                     //System.Windows.Threading.Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() => { RaisePropertyChanged("SelectedDrinkType"); }), null);
-                    Mediator.NotifyColleagues("OrderItemAddedColdDrinks", item);
-                } catch (Exception ex)
+                    Mediator.NotifyColleagues("OrderItemAddedMeetingRoomDrinks", item);
+                }
+                catch (Exception ex)
                 {
                     SelectedDrinkType = null;
                     SelectedOrderNumber = null;
                     NotifyFailureMessageShow = true;
                     Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.FailureToken.Value);
                 }
-
-            } else
+            }
+            else
             {
                 NotifyFailureMessageShow = true;
                 SelectedDrinkType = null;
                 SelectedOrderNumber = null;
                 Mediator.NotifyColleagues(MessageConstants.NotifyMessengerBroker.Value, MessageConstants.FailureToken);
             }
-
-
-
-            
         }
         private bool CanOrderItemInsert()
         {
-            if(selectedDrinkType != null && SelectedOrderNumber != null) {
+            if (selectedDrinkType != null && SelectedOrderNumber != null)
+            {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }

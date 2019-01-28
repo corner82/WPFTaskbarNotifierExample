@@ -34,10 +34,10 @@
     </tn:TaskbarNotifier.Resources>
 
     <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuOpen">
+        <EventTrigger RoutedEvent="ButtonBase.Click"  SourceName="ButtonMenuOpen">
             <BeginStoryboard Storyboard="{StaticResource MenuOpen}"></BeginStoryboard>
         </EventTrigger>
-                <EventTrigger  RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuClose">
+        <EventTrigger  RoutedEvent="ButtonBase.Click" SourceName="ButtonMenuClose">
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"></BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
@@ -55,13 +55,14 @@
                 </materialDesign:Card>
             </Grid>
             <StackPanel Orientation="Horizontal">
-                <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="50" Background="#2C3B41">
-                    <StackPanel>
-                        <Grid  Height="70" Background="#222D32">
+                <!--<Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="50" Background="#2C3B41">-->
+                <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="50" Background="#8e9499">
+                <StackPanel>
+                        <Grid  Height="50" Background="#ad0606">
                             <Button Visibility="Collapsed" x:Name="ButtonMenuClose"  Click="ButtonMenuClose_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
                                 <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
                             </Button>
-                            <Button x:Name="ButtonMenuOpen" Click="ButtonMenuOpen_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <Button x:Name="ButtonMenuOpen" Click="ButtonMenuOpen_Click"  Padding="10 0 0 0" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
                                 <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
                             </Button>
                         </Grid>
