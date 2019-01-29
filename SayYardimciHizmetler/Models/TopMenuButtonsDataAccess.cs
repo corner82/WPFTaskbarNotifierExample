@@ -27,9 +27,9 @@ namespace SayYardimciHizmetler.Models
         {
             return new List<TopMenuButton>()
             {
-                new TopMenuButton {ButtonName = "TestButton1", ButtonContent = "test1", IconName = "Power"},
-                new TopMenuButton {ButtonName = "TestButton2", ButtonContent = "test2", IconName = "Bell"},
-                new TopMenuButton {ButtonName = "TestButton3", ButtonContent = "test3", IconName = "Bell"}
+                new TopMenuButton {ButtonName = "Çıkış", ButtonContent = "test1", IconName = "Power"},
+                //new TopMenuButton {ButtonName = "TestButton2", ButtonContent = "test2", IconName = "Bell"},
+                new TopMenuButton {ButtonName = "Mesajlarım", ButtonContent = "test3", IconName = "Bell"}
             };
         }
     }

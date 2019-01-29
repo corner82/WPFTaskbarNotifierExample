@@ -22,12 +22,12 @@
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame  KeyTime="0" Value="50"></EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="200"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="165"></EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MenuClose">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame  KeyTime="0" Value="200"></EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame  KeyTime="0" Value="165"></EasingDoubleKeyFrame>
                 <EasingDoubleKeyFrame  KeyTime="0:0:0.5" Value="50"></EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
@@ -48,21 +48,38 @@
                 </ContentControl>-->
             <ww:TopMenuUserControl></ww:TopMenuUserControl>
             <Grid Height="90" Width="542" Margin="0 72 0 0" VerticalAlignment="Top" HorizontalAlignment="Right">
+                
                 <materialDesign:Card Margin="0 0 0  0"  materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom"
-                Padding="12 12 12 12"  HorizontalContentAlignment="Center" >
-                    <ContentPresenter x:Name="BreadcrumbContent"  HorizontalAlignment="Right" Content="CUSTOM CLIP">
-                    </ContentPresenter>
+                Padding="5"  HorizontalContentAlignment="Center" >
+                    <materialDesign:Chip HorizontalAlignment="Right" Name="TestChipMainPage"
+                            Content="ANZ Bank"
+                            Icon="M" />
+                    <!--<ContentPresenter x:Name="BreadcrumbContent"  HorizontalAlignment="Right" Content="CUSTOM CLIP">
+                        
+                    </ContentPresenter>-->
                 </materialDesign:Card>
             </Grid>
             <StackPanel Orientation="Horizontal">
                 <!--<Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="50" Background="#2C3B41">-->
                 <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="50" Background="#8e9499">
                 <StackPanel>
-                        <Grid  Height="50" Background="#ad0606">
-                            <Button Visibility="Collapsed" x:Name="ButtonMenuClose"  Click="ButtonMenuClose_Click" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
+                        <Grid  Height="70" Background="#ad0606">
+                            <Button Visibility="Collapsed" 
+                                    Margin="0 8 0 0"
+                                    x:Name="ButtonMenuClose"  
+                                    Click="ButtonMenuClose_Click" 
+                                    Width="60" Height="60" 
+                                    Background="{x:Null}" BorderBrush="{x:Null}" 
+                                    VerticalAlignment="Top" HorizontalAlignment="Right">
                                 <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
                             </Button>
-                            <Button x:Name="ButtonMenuOpen" Click="ButtonMenuOpen_Click"  Padding="10 0 0 0" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <Button Margin="0 8 0 0"
+                                    x:Name="ButtonMenuOpen" 
+                                    Click="ButtonMenuOpen_Click"  
+                                    Padding="10 0 0 0" 
+                                    Width="60" Height="60" 
+                                    Background="{x:Null}" BorderBrush="{x:Null}" 
+                                    VerticalAlignment="Top" HorizontalAlignment="Right">
                                 <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" Foreground="WhiteSmoke"></materialDesign:PackIcon>
                             </Button>
                         </Grid>

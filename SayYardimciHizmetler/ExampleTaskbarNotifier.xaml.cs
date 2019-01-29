@@ -78,6 +78,10 @@ namespace SayYardimiciHizmetler
             InitializeComponent();
             //ConnectAsync();
 
+            this.BoardFrame.Content = new DashBoard();
+            //this.BreadcrumbContent.Content = "Ana Sayfa";
+            this.TestChipMainPage.Content = "Sayýn Mustafa, Hoþgeldiniz";
+
             Application.Current.MainWindow = this;
             //var windows = Application.Current.Windows;
             /*QModernMessageBox.Show(this, "The quick brown fox jumps over the lazy dog.",
@@ -174,20 +178,20 @@ namespace SayYardimiciHizmetler
                             {
                                // this.TestContentControl.Content = new HotDrinks();
                                 this.BoardFrame.Content = new DashBoard();
-                                this.BreadcrumbContent.Content = "Ana Sayfa";
+                                //this.BreadcrumbContent.Content = "Ana Sayfa";
                                 break;
                             }
                         case "AccountCardDetails":
                             {
                                 this.BoardFrame.Content = new Expanders();
-                                this.BreadcrumbContent.Content = "Expanders";
+                                //this.BreadcrumbContent.Content = "Expanders";
                                 break;
                             }
-                        case "Tea":
+                        case "CoffeeToGo":
                             {
                                 //this.BoardFrame.Content = new HotDrinks();
                                 this.BoardFrame.Content = new HotDrinksMainPage();
-                                this.BreadcrumbContent.Content = "Sýcak Ýçecekler";
+                                //this.BreadcrumbContent.Content = "Sýcak Ýçecekler";
                                 break;
                             }
                         case "Beer":
@@ -195,15 +199,15 @@ namespace SayYardimiciHizmetler
 
                                 //this.BoardFrame.Content = new ColdDrinks();
                                 this.BoardFrame.Content = new ColdDrinksMainPage();
-                                this.BreadcrumbContent.Content = "Soðuk içecekler";
+                                //this.BreadcrumbContent.Content = "Soðuk içecekler";
                                 break;
                             }
-                        case "Details":
+                        case "AccountMultiplePlus":
                             {
 
                                 //this.BoardFrame.Content = new ColdDrinks();
                                 this.BoardFrame.Content = new MeetingRoomDrinksMainPage();
-                                this.BreadcrumbContent.Content = "Toplantý Salonu Ýçecekleri";
+                                //this.BreadcrumbContent.Content = "Toplantý Salonu Ýçecekleri";
                                 break;
                             }
                         case "AccountEdit":
@@ -211,17 +215,20 @@ namespace SayYardimiciHizmetler
 
                                 //this.BoardFrame.Content = new ColdDrinks();
                                 this.BoardFrame.Content = new ComplaintsMainPage();
-                                this.BreadcrumbContent.Content = "Önerileriniz";
+                                //this.BreadcrumbContent.Content = "Önerileriniz";
                                 break;
                             }
                         case "Transitions":
                             {
                                 this.BoardFrame.Content = new TransitionsTestPage();
-                                this.BreadcrumbContent.Content = "Transitions Test Page";
+                                //this.BreadcrumbContent.Content = "Transitions Test Page";
                                 break;
                             }
                         default:
-                            MessageBox.Show("default");
+                            this.BoardFrame.Content = new DashBoard();
+                            //this.BreadcrumbContent.Content = "Ana Sayfa";
+                            break;
+                            //MessageBox.Show("default");
                             break;
 
                     }

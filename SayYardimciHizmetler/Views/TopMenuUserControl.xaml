@@ -22,13 +22,13 @@
     <!--<Grid Height="70" VerticalAlignment="Top" Background="#3C8DBC" >-->
     <Grid Height="70" VerticalAlignment="Top" Background="#141212" >
         <StackPanel Orientation="Horizontal">
-            <Image
-      Source="Resources/Chartridge046_small.jpg"
-      Height="140"
-      Width="196"
-      Stretch="None" />
-            <TextBlock FontSize="22" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
-                SAY-NET
+            <Image Margin="240 0 0 0"
+      Source="/Resources/Sayistay.png"
+      Height="70"
+      Width="70"
+      Stretch="UniformToFill" />
+            <TextBlock Margin="10 0 0 0" FontSize="22" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
+                YHTM
             </TextBlock>
 
         </StackPanel>

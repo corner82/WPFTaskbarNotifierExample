@@ -419,5 +419,38 @@
   <ItemGroup>
     <Folder Include="Enums\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sayistay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\colddrinks1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hotdrinks1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\meetingroomdrinks1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\meetingroomdrinks2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dashboard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dashboard2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dashboard3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dashboard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dashboard5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dashboard6.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

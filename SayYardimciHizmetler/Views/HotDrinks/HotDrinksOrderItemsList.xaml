@@ -22,39 +22,7 @@
                 <!-- throw in some extra colour for our floating action button -->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="DataGrid"  >
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding Path=AnimationState}" Value="New">
-                        <DataTrigger.EnterActions>
-                            <StopStoryboard BeginStoryboardName="EndAnimation" />
-                            <BeginStoryboard Name="NewAnimation">
-                                <Storyboard>
-                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,30,0,0" To="0,0,0,0" Duration="0:0:1" />
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1" />
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </DataTrigger.EnterActions>
-                        <DataTrigger.ExitActions>
-
-                        </DataTrigger.ExitActions>
-
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding Path=AnimationState}" Value="End">
-                        <DataTrigger.EnterActions>
-                            <StopStoryboard BeginStoryboardName="NewAnimation" />
-                            <BeginStoryboard Name="EndAnimation">
-                                <Storyboard>
-                                    <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-20,0,0" Duration="0:0:1"/>
-                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:1" />
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </DataTrigger.EnterActions>
-                    </DataTrigger>
-
-                </Style.Triggers>
-            </Style>
         </ResourceDictionary>
-        
     </UserControl.Resources>
 
 
@@ -64,35 +32,120 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
-            <materialDesign:ColorZone Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="4">
-                <StackPanel Margin="16" Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="AccessPoint" Height="32" Width="32" />
-                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Margin="16 0 0 0">Sipariş Detayları</TextBlock>
+        <materialDesign:TransitioningContent 
+            Grid.Row="0"
+            OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
+            <materialDesign:ColorZone Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                                      materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+                                      Margin="0 0 0 4">
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="FolderMultiple" Height="32" Width="32" VerticalAlignment="Center"/>
+                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" 
+                               VerticalAlignment="Center"
+                               Margin="16 0 0 0">Sipariş Detayları</TextBlock>
                 </StackPanel>
             </materialDesign:ColorZone>
         </materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent 
+            Grid.Row="1"
+            OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
+            <materialDesign:Card Grid.Row="2"
+              Margin="0 4 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image Source="/Resources/hotdrinks1.jpg" Height="100" Stretch="UniformToFill" />
+                    <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            Margin="0 0 16 -20">
+                        <materialDesign:PackIcon Kind="ShareVariant" />
+                    </Button>
+                    <StackPanel Grid.Row="1" Margin="8 24 8 4">
+                        <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Margin="0">Sipariş Kayıt</TextBlock>
+                        <Viewbox  Margin="0 4 0 8" Height="16" HorizontalAlignment="Left">
+                            <materialDesign:RatingBar Value="3" Orientation="Horizontal" Foreground="Gold" Margin="0" />
+                        </Viewbox>
+                        <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" VerticalAlignment="Center">
+                        Sipariş detaylarınızı inceleyebilir, siparişinize son halini verip, kayıt yapabilirsiniz
+                        </TextBlock>
+                    </StackPanel>
+                    <Separator Grid.Row="2" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="8 0 8 0" />
+                    <TextBlock Grid.Row="3" Margin="8 4 8 4" Style="{StaticResource MaterialDesignBody2TextBlock}"> Oda ve / veya kişi seçiniz</TextBlock>
+                    <Grid Grid.Row="4">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Grid.Column="0" Kind="ArrowUpThick" VerticalAlignment="Center" Margin="8 4 4 4" />
+                            <ComboBox Grid.Column="1"  HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Oda seçiniz" Width="200">
+                                <ComboBoxItem>1006</ComboBoxItem>
+                                <ComboBoxItem>1007</ComboBoxItem>
+                                <ComboBoxItem>1008</ComboBoxItem>
+                                <ComboBoxItem>1009</ComboBoxItem>
+                            </ComboBox>
+                            <materialDesign:PackIcon Grid.Column="2" Kind="AccountSearch" VerticalAlignment="Center" Margin="8 4 4 4" />
+                            <ComboBox Grid.Column="3"  HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Kişi seçiniz" Width="200">
+                                <ComboBoxItem>Mehmet Özcan</ComboBoxItem>
+                                <ComboBoxItem>Okan Ciran</ComboBoxItem>
+                                <ComboBoxItem>Büşra Altunbay</ComboBoxItem>
+                                <ComboBoxItem>Özgür Ünal</ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                    </Grid>
+                    <TextBlock Grid.Row="5" Margin="8 10 8 4" Style="{StaticResource MaterialDesignBody2TextBlock}"> Sipariş detay listesi</TextBlock>
+                    <StackPanel Grid.Row="6">
 
-
-        <DataGrid Grid.Row="1" Margin="0 8 0 0" ItemsSource="{Binding OrderItemsList, Mode=TwoWay}" CanUserSortColumns="True" CanUserAddRows="False"
+                        <DataGrid  Margin="0 0 0 0" ItemsSource="{Binding OrderItemsList, Mode=TwoWay}" CanUserSortColumns="True" CanUserAddRows="False"
                                AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding DrinkAttrName}" Header="İçecek Attr" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkOrderNumberName}" Header="Miktar" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypeName}" Header="İçecek " MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypePrice}" Header="Fiyat"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-            </DataGrid.Columns>
-        </DataGrid>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding DrinkAttrName}" Header="İçecek Attr" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkOrderNumberName}" Header="Miktar" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypeName}" Header="İçecek " MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypePrice}" Header="Fiyat"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="7">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Margin="8 4 8 8">
+                                Seçileni Sil
+                            </Button>
+                            <Button Grid.Column="1" HorizontalAlignment="Right" Margin="8 8 8 8"
+                                Content="Kaydet"
+                                Command="{Binding InsertOrderItemCommand}" 
+                                Style="{StaticResource MaterialDesignRaisedAccentButton}"                    
+                                ToolTip="Resource name: MaterialDesignRaisedAccentButton">
+                            </Button>
+                        </Grid>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
+        </materialDesign:TransitioningContent>
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Row="2" HorizontalAlignment="Right">
             <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" 
                     Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
                     VerticalAlignment="Center" HorizontalAlignment="Left" 
                     Margin="16">
                 <materialDesign:PackIcon Kind="StepBackward" />
             </Button>
-
         </StackPanel>
     </Grid>
 

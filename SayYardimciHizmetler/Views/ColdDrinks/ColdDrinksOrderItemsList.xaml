@@ -25,119 +25,124 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-
-
     <Grid HorizontalAlignment="Center" Width="500" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
-            <materialDesign:ColorZone Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="4">
-                <StackPanel Margin="16 8 16 8" Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="AccessPoint" Height="32" Width="32" />
-                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" Margin="16 0 0 0">Sipariş Detayları</TextBlock>
+        <materialDesign:TransitioningContent 
+            Grid.Row="0"
+            OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
+            <materialDesign:ColorZone Mode="PrimaryMid" materialDesign:ShadowAssist.ShadowDepth="Depth3" 
+                                      materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+                                      Margin="0 0 0 4">
+                <StackPanel Margin="5" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="FolderMultiple" Height="32" Width="32" />
+                    <TextBlock Style="{DynamicResource MaterialDesignHeadlineTextBlock}" 
+                               VerticalAlignment="Center"
+                               Margin="16 0 0 0">Sipariş Detayları</TextBlock>
                 </StackPanel>
             </materialDesign:ColorZone>
         </materialDesign:TransitioningContent>
-
-        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
-            <GroupBox Header="Card Group Box"
-                      Style="{DynamicResource MaterialDesignCardGroupBox}"
-                      Margin="0 66 0 0">
-                <GroupBox.HeaderTemplate>
-                    <DataTemplate>
-                        <StackPanel
-                            Orientation="Horizontal">
-                        <materialDesign:PackIcon
-                            Kind="ImageArea"
-                            Height="16"
-                            Width="16"
-                            VerticalAlignment="Center" />
-                        <TextBlock
-                            Margin="8,0,0,0"
-                             VerticalAlignment="Center"
-                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                            Text="{Binding}" />
+        <materialDesign:TransitioningContent 
+            Grid.Row="1"
+            OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
+            <materialDesign:Card Grid.Row="2"
+              Margin="0 4 0 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image Source="/Resources/colddrinks1.jpg" Height="100" Stretch="UniformToFill" />
+                    <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            Margin="0 0 16 -20">
+                        <materialDesign:PackIcon Kind="ShareVariant" />
+                    </Button>
+                    <StackPanel Grid.Row="1" Margin="8 24 8 4">
+                        <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Margin="0">Sipariş Kayıt</TextBlock>
+                        <Viewbox  Margin="0 4 0 8" Height="16" HorizontalAlignment="Left">
+                            <materialDesign:RatingBar Value="3" Orientation="Horizontal" Foreground="Gold" Margin="0" />
+                        </Viewbox>
+                        <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" VerticalAlignment="Center">
+                        Sipariş detaylarınızı inceleyebilir, siparişinize son halini verip, kayıt yapabilirsiniz
+                        </TextBlock>
                     </StackPanel>
-                </DataTemplate>
-            </GroupBox.HeaderTemplate>
-            <DataGrid Grid.Row="1" Margin="0 8 0 0" ItemsSource="{Binding OrderItemsList, Mode=TwoWay}" CanUserSortColumns="True" CanUserAddRows="False"
+                    <Separator Grid.Row="2" Style="{StaticResource MaterialDesignDarkSeparator}" Margin="8 0 8 0" />
+                    <TextBlock Grid.Row="3" Margin="8 4 8 4" Style="{StaticResource MaterialDesignBody2TextBlock}"> Oda ve / veya kişi seçiniz</TextBlock>
+                    <Grid Grid.Row="4">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Grid.Column="0" Kind="ArrowUpThick" VerticalAlignment="Center" Margin="8 4 4 4" />
+                            <ComboBox Grid.Column="1"  HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Oda seçiniz" Width="200">
+                                <ComboBoxItem>1006</ComboBoxItem>
+                                <ComboBoxItem>1007</ComboBoxItem>
+                                <ComboBoxItem>1008</ComboBoxItem>
+                                <ComboBoxItem>1009</ComboBoxItem>
+                            </ComboBox>
+                            <materialDesign:PackIcon Grid.Column="2" Kind="AccountSearch" VerticalAlignment="Center" Margin="8 4 4 4" />
+                            <ComboBox Grid.Column="3"  HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Kişi seçiniz" Width="200">
+                                <ComboBoxItem>Mehmet Özcan</ComboBoxItem>
+                                <ComboBoxItem>Okan Ciran</ComboBoxItem>
+                                <ComboBoxItem>Büşra Altunbay</ComboBoxItem>
+                                <ComboBoxItem>Özgür Ünal</ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                    </Grid>
+                    <TextBlock Grid.Row="5" Margin="8 10 8 4" Style="{StaticResource MaterialDesignBody2TextBlock}"> Sipariş detay listesi</TextBlock>
+                    <StackPanel Grid.Row="6">
+                        <DataGrid  Margin="0 0 0 0" ItemsSource="{Binding OrderItemsList, Mode=TwoWay}" CanUserSortColumns="True" CanUserAddRows="False"
                                AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
-                <DataGrid.Columns>
-                    <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected}" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-                            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
-                    <DataGridCheckBoxColumn.Header>
-                        <Border Background="Transparent" Padding="6 0 6 0" HorizontalAlignment="Center">
-                            <CheckBox HorizontalAlignment="Center" DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext}" IsChecked="{Binding IsAllItems3Selected}" />
-                        </Border>
-                    </DataGridCheckBoxColumn.Header>
-                </DataGridCheckBoxColumn>-->
-                    <DataGridTextColumn Binding="{Binding DrinkAttrName}" Header="İçecek Attr" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                    <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkOrderNumberName}" Header="Miktar" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypeName}" Header="İçecek " MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                    <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypePrice}" Header="Fiyat"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                    <!--<materialDesign:MaterialDataGridTextColumn Binding="{Binding Numeric}" Header="Number with long header" Width="120" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                            <Setter Property="HorizontalAlignment" Value="Right" />
-                            <Setter Property="ContentTemplate">
-                                <Setter.Value>
-                                    <DataTemplate>
-                                        <TextBlock TextWrapping="Wrap" Text="{Binding}" TextAlignment="Right" />
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="HorizontalAlignment"  Value="Right" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </materialDesign:MaterialDataGridTextColumn>-->
-                    <!-- use custom combo box column to get better combos. Use ItemsSourceBinding as your binding template to be applied to each combo -->
-                    <!--<materialDesign:MaterialDataGridComboBoxColumn Header="Food" SelectedValueBinding="{Binding Food}" ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Foods}" />-->
-                </DataGrid.Columns>
-            </DataGrid>
-            
-        </GroupBox>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding DrinkAttrName}" Header="İçecek Attr" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkOrderNumberName}" Header="Miktar" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypeName}" Header="İçecek " MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypePrice}" Header="Fiyat"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="7">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Margin="8 4 8 8">
+                                Seçileni Sil
+                            </Button>
+                            <Button Grid.Column="1" HorizontalAlignment="Right" Margin="8 8 8 8"
+                                Content="Kaydet"
+                                Command="{Binding InsertOrderItemCommand}" 
+                                Style="{StaticResource MaterialDesignRaisedAccentButton}"                    
+                                ToolTip="Resource name: MaterialDesignRaisedAccentButton">
+                            </Button>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+            </materialDesign:Card>
         </materialDesign:TransitioningContent>
-
-        <!--<materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.2}">
-            <GroupBox
-              Header="Shadow Header"
-              Style="{DynamicResource MaterialDesignGroupBox}"
-              Margin="0 380 0 0"
-              materialDesign:ShadowAssist.ShadowDepth="Depth3"
-              BorderThickness="0">
-            </GroupBox>
-        </materialDesign:TransitioningContent>-->
-
-
-
-
-
-        <!--<DataGrid Grid.Row="1" Margin="0 8 0 0" ItemsSource="{Binding OrderItemsList, Mode=TwoWay}" CanUserSortColumns="True" CanUserAddRows="False"
-                               AutoGenerateColumns="False" materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding DrinkAttrName}" Header="İçecek Attr" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkOrderNumberName}" Header="Miktar" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypeName}" Header="İçecek " MaxLength="255" EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                <materialDesign:MaterialDataGridTextColumn Binding="{Binding DrinkTypePrice}" Header="Fiyat"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-            </DataGrid.Columns>
-        </DataGrid>-->
-
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
-            <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" 
+            <Button Grid.Column="0" Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" 
                     Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
                     VerticalAlignment="Center" HorizontalAlignment="Left" 
                     Margin="16">
-                <materialDesign:PackIcon Kind="StepBackward" />
-            </Button>
-            
+                    <materialDesign:PackIcon Kind="StepBackward" />
+                </Button>
         </StackPanel>
     </Grid>
 </UserControl>
